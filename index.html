@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Swarajya Hack Fest 2026 — AWS Cloud Club JDIET</title>
+    <meta name="description"
+        content="National-level hybrid cloud hackathon by AWS Cloud Club JDIET. ₹20,000 prize pool. Online 24h + Offline Finals at JDIET Yavatmal." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --saffron: #FF6B00;
+            --sl: #FF9040;
+            --sg: rgba(255, 107, 0, .25);
+            --white: #fff;
+            --muted: rgba(255, 255, 255, .55);
+            --gb: rgba(255, 255, 255, .05);
+            --gbr: rgba(255, 107, 0, .3);
+            --glow: 0 20px 60px rgba(255, 107, 0, .3)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        ul {
+            list-style: none
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        section {
+            padding: 96px 0
+        }
+
+        .sec-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 30%, var(--saffron) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 14px
+        }
+
+        .sec-sub {
+            text-align: center;
+            color: var(--muted);
+            font-size: 1rem;
+            margin-bottom: 52px
+        }
+
+        .glass {
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 32px;
+            transition: transform .35s, box-shadow .35s
+        }
+
+        .glass:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--glow)
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity .65s ease, transform .65s ease
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none
+        }
+
+        .d1 {
+            transition-delay: .1s
+        }
+
+        .d2 {
+            transition-delay: .2s
+        }
+
+        .d3 {
+            transition-delay: .3s
+        }
+
+        .d4 {
+            transition-delay: .4s
+        }
+
+        .d5 {
+            transition-delay: .5s
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: transform .25s, box-shadow .25s, background .3s
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -75%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255, 255, 255, .18);
+            transform: skewX(-20deg);
+            transition: left .45s
+        }
+
+        .btn:hover::after {
+            left: 130%
+        }
+
+        .btn-p {
+            background: linear-gradient(135deg, var(--saffron), var(--sl));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255, 107, 0, .4)
+        }
+
+        .btn-p:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 24px rgba(255, 107, 0, .55)
+        }
+
+        .btn-o {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, .5)
+        }
+
+        .btn-o:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, .07);
+            transform: translateY(-2px)
+        }
+
+        /* NAVBAR */
+        #nb {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(10, 10, 10, .75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 107, 0, .15);
+            transition: background .3s
+        }
+
+        #nb.scrolled {
+            background: rgba(10, 10, 10, .95);
+            border-bottom-color: rgba(255, 107, 0, .35)
+        }
+
+        .ni {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+            gap: 24px
+        }
+
+        .nl {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .88rem;
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .nl img {
+            height: 32px;
+            width: auto
+        }
+
+        .nl .lt {
+            color: var(--white)
+        }
+
+        .nl .lt span {
+            color: var(--saffron)
+        }
+
+        .nls {
+            display: flex;
+            align-items: center;
+            gap: 28px
+        }
+
+        .nls a {
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--muted);
+            position: relative;
+            padding-bottom: 4px;
+            transition: color .3s
+        }
+
+        .nls a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--saffron);
+            transition: width .3s
+        }
+
+        .nls a:hover,
+        .nls a.active {
+            color: var(--white)
+        }
+
+        .nls a:hover::after,
+        .nls a.active::after {
+            width: 100%
+        }
+
+        .ham {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px
+        }
+
+        .ham span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: transform .3s, opacity .3s
+        }
+
+        .ham.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg)
+        }
+
+        .ham.open span:nth-child(2) {
+            opacity: 0
+        }
+
+        .ham.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg)
+        }
+
+        .mnav {
+            display: none;
+            flex-direction: column;
+            background: rgba(10, 10, 10, .97);
+            border-top: 1px solid var(--gbr)
+        }
+
+        .mnav a {
+            padding: 14px 24px;
+            font-size: .95rem;
+            font-weight: 500;
+            color: var(--muted);
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            transition: color .2s, background .2s
+        }
+
+        .mnav a:hover {
+            color: var(--white);
+            background: rgba(255, 107, 0, .08)
+        }
+
+        .mnav.open {
+            display: flex
+        }
+
+        /* HERO */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 0
+        }
+
+        .hbg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, .55), rgba(0, 0, 0, .88)), url('./images/hero-bg.jpg') center top/cover no-repeat
+        }
+
+        @media(max-width:768px) {
+            .hbg {
+                background: linear-gradient(to bottom, rgba(0, 0, 0, .55), rgba(0, 0, 0, .88)), url('./images/hero.png?v=2') center top/cover no-repeat !important;
+            }
+        }
+
+        #pc {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1
+        }
+
+        .hc {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 120px 24px 80px;
+            max-width: 900px;
+            margin: 0 auto
+        }
+
+        .hbadge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 107, 0, .15);
+            border: 1px solid rgba(255, 107, 0, .4);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--sl);
+            letter-spacing: .04em;
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: fu .7s ease .2s forwards
+        }
+
+        .ht {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3.5rem, 10vw, 7.5rem);
+            font-weight: 900;
+            letter-spacing: .06em;
+            line-height: 1;
+            background: linear-gradient(135deg, #FF9040 0%, #FF6B00 50%, #FF4500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fu .7s ease .4s forwards
+        }
+
+        .hs {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            font-weight: 600;
+            letter-spacing: .25em;
+            color: var(--white);
+            margin-top: 4px;
+            opacity: 0;
+            animation: fu .7s ease .55s forwards
+        }
+
+        .htag {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--muted);
+            margin-top: 16px;
+            font-style: italic;
+            opacity: 0;
+            animation: fu .7s ease .65s forwards
+        }
+
+        .hmeta {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .4);
+            margin-top: 8px;
+            letter-spacing: .03em;
+            opacity: 0;
+            animation: fu .7s ease .75s forwards
+        }
+
+        .hprize {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 28px;
+            opacity: 0;
+            animation: fu .7s ease .85s forwards
+        }
+
+        .hctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 28px;
+            opacity: 0;
+            animation: fu .7s ease .95s forwards
+        }
+
+        .htimer {
+            margin-top: 40px;
+            opacity: 0;
+            animation: fu .7s ease 1.05s forwards
+        }
+
+        .tl {
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 12px
+        }
+
+        .tbs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .tb {
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid var(--gbr);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: 16px 20px;
+            min-width: 80px;
+            text-align: center
+        }
+
+        .tn {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--saffron);
+            line-height: 1;
+            display: block
+        }
+
+        .tu {
+            font-size: .7rem;
+            color: var(--muted);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-top: 4px;
+            display: block
+        }
+
+        @keyframes fu {
+            from {
+                opacity: 0;
+                transform: translateY(30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        /* ABOUT */
+        .ag {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start
+        }
+
+        .at p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.85
+        }
+
+        .sg {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .sc {
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            padding: 24px;
+            text-align: center;
+            transition: transform .32s, box-shadow .32s
+        }
+
+        .sc:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(255, 107, 0, .2)
+        }
+
+        .sv {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--saffron);
+            display: block
+        }
+
+        .sd {
+            font-size: .82rem;
+            color: var(--muted);
+            margin-top: 6px;
+            display: block
+        }
+
+        /* ROUNDS */
+        #rounds {
+            background: rgba(0, 0, 0, .2)
+        }
+
+        .rg {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 64px
+        }
+
+        .rc {
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            border-left: 3px solid var(--saffron);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            padding: 36px 32px;
+            transition: transform .32s, box-shadow .32s
+        }
+
+        .rc:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--glow)
+        }
+
+        .ri {
+            font-size: 2.4rem;
+            margin-bottom: 12px
+        }
+
+        .rtt {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--saffron);
+            margin-bottom: 6px
+        }
+
+        .rd {
+            font-size: .9rem;
+            color: var(--muted);
+            margin-bottom: 20px
+        }
+
+        .rc ul li {
+            font-size: .92rem;
+            color: rgba(255, 255, 255, .72);
+            padding: 7px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5
+        }
+
+        .rc ul li::before {
+            content: '▸';
+            color: var(--saffron);
+            flex-shrink: 0;
+            margin-top: 1px
+        }
+
+        /* TIMELINE */
+        .tline {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 20px
+        }
+
+        .tline::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--saffron), var(--sl), var(--saffron))
+        }
+
+        .tli {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            position: relative;
+            z-index: 1
+        }
+
+        .tld {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--black);
+            border: 3px solid var(--saffron);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            animation: pulse 2s infinite
+        }
+
+        .tldi {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--saffron)
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 0, .6)
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(255, 107, 0, 0)
+            }
+        }
+
+        .tln {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px
+        }
+
+        .tldt {
+            font-size: .72rem;
+            color: var(--muted)
+        }
+
+        /* PRIZES */
+        .pw {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 28px
+        }
+
+        .pc {
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            text-align: center;
+            padding: 32px 24px;
+            width: 230px;
+            transition: transform .32s, box-shadow .32s
+        }
+
+        .pc:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--glow)
+        }
+
+        .pc.first {
+            width: 270px;
+            padding: 40px 28px;
+            border-color: rgba(255, 107, 0, .6);
+            box-shadow: 0 0 40px rgba(255, 107, 0, .12)
+        }
+
+        .pm {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            display: block
+        }
+
+        .pp {
+            font-family: 'Cinzel', serif;
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: .05em;
+            margin-bottom: 10px
+        }
+
+        .pa {
+            font-family: 'Cinzel', serif;
+            font-size: 1.7rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--saffron), var(--sl));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .pcred {
+            font-size: .82rem;
+            color: var(--sl);
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px
+        }
+
+        .pperks {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-top: 8px
+        }
+
+        .pc.consol {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 24px 32px
+        }
+
+        .consol-inner {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .pnote {
+            text-align: center;
+            color: var(--muted);
+            font-size: .88rem;
+            font-style: italic;
+            margin-top: 16px
+        }
+
+        /* RULES */
+        #rules {
+            background: rgba(0, 0, 0, .2)
+        }
+
+        .rcon {
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            padding: 40px 48px
+        }
+
+        .rgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px 40px
+        }
+
+        .rgrid li {
+            font-size: .93rem;
+            color: rgba(255, 255, 255, .75);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.55
+        }
+
+        .rgrid li::before {
+            content: '✦';
+            color: var(--saffron);
+            flex-shrink: 0
+        }
+
+        .rhighlight {
+            background: rgba(255, 107, 0, .08);
+            border-left: 3px solid var(--saffron);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 20px 0;
+            font-size: .95rem;
+            color: var(--white)
+        }
+
+        /* CLUB */
+        .clg {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start
+        }
+
+        .clt {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.85
+        }
+
+        .cl-logo {
+            height: 60px;
+            margin-bottom: 20px
+        }
+
+        .cl-logo-placeholder {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 107, 0, .1);
+            border: 1px solid var(--gbr);
+            border-radius: 8px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            color: var(--sl);
+            font-weight: 700;
+            font-size: 1rem
+        }
+
+        /* SOCIAL PILLS */
+        .spill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 107, 0, .25);
+            color: var(--white);
+            margin-bottom: 12px;
+            transition: background .3s, transform .25s, box-shadow .25s;
+            font-weight: 500;
+            font-size: .92rem;
+            cursor: pointer
+        }
+
+        .spill img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1)
+        }
+
+        .spill:hover {
+            transform: translateY(-3px)
+        }
+
+        .spill.ig:hover {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            box-shadow: 0 8px 24px rgba(253, 29, 29, .3)
+        }
+
+        .spill.li:hover {
+            background: #0077b5;
+            box-shadow: 0 8px 24px rgba(0, 119, 181, .35)
+        }
+
+        .spill.mu:hover {
+            background: #ed1c40;
+            box-shadow: 0 8px 24px rgba(237, 28, 64, .35)
+        }
+
+        /* FAQ */
+        #faq {
+            background: rgba(0, 0, 0, .15)
+        }
+
+        .fl {
+            max-width: 780px;
+            margin: 0 auto
+        }
+
+        .fi {
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: border-color .25s
+        }
+
+        .fi.open {
+            border-color: rgba(255, 107, 0, .55)
+        }
+
+        .fq {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: .97rem;
+            gap: 12px;
+            user-select: none;
+            transition: color .2s
+        }
+
+        .fq:hover {
+            color: var(--sl)
+        }
+
+        .fa-arrow {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 107, 0, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            transition: transform .3s, background .25s
+        }
+
+        .fi.open .fa-arrow {
+            transform: rotate(180deg);
+            background: rgba(255, 107, 0, .3)
+        }
+
+        .fa {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease, padding .35s;
+            padding: 0 24px;
+            color: var(--muted);
+            font-size: .93rem;
+            line-height: 1.7
+        }
+
+        .fi.open .fa {
+            max-height: 200px;
+            padding: 0 24px 20px
+        }
+
+        /* CONTACT */
+        .ccard {
+            max-width: 580px;
+            margin: 0 auto;
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            border-radius: 20px;
+            backdrop-filter: blur(16px);
+            padding: 44px 48px;
+            text-align: center
+        }
+
+        .ci {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            text-align: left
+        }
+
+        .ci:last-of-type {
+            border-bottom: none
+        }
+
+        .cicon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            width: 28px;
+            text-align: center
+        }
+
+        .cp {
+            font-weight: 600;
+            font-size: .95rem
+        }
+
+        .csb {
+            font-size: .8rem;
+            color: var(--muted)
+        }
+
+        .soc-row {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            gap: 0
+        }
+
+        .cbw {
+            margin-top: 28px
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid;
+            border-image: linear-gradient(90deg, transparent, var(--saffron), var(--sl), var(--saffron), transparent) 1;
+            padding: 32px 0;
+            background: rgba(0, 0, 0, .3)
+        }
+
+        .fi2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap
+        }
+
+        .fc {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .35)
+        }
+
+        .fce {
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .4);
+            text-align: center
+        }
+
+        .fce span {
+            color: var(--saffron);
+            font-weight: 600
+        }
+
+        .fsoc {
+            display: flex;
+            gap: 12px
+        }
+
+        .fsoc a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .25s, transform .25s
+        }
+
+        .fsoc a img {
+            width: 18px;
+            height: 18px;
+            filter: brightness(0) invert(1)
+        }
+
+        .fsoc a.ig:hover {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            transform: translateY(-2px)
+        }
+
+        .fsoc a.wa:hover {
+            background: #25D366;
+            transform: translateY(-2px)
+        }
+
+        .fsoc a.li:hover {
+            background: #0077b5;
+            transform: translateY(-2px)
+        }
+
+        .fsoc a.mu:hover {
+            background: #ed1c40;
+            transform: translateY(-2px)
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:768px) {
+            section {
+                padding: 72px 0
+            }
+
+            .nls {
+                display: none
+            }
+
+            .ham {
+                display: flex
+            }
+
+            .ag,
+            .rg,
+            .clg {
+                grid-template-columns: 1fr;
+                gap: 28px
+            }
+
+            .sg {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .rgrid {
+                grid-template-columns: 1fr
+            }
+
+            .pw {
+                flex-direction: column;
+                align-items: center
+            }
+
+            .pc,
+            .pc.first {
+                width: 100%;
+                max-width: 320px
+            }
+
+            .tline {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0;
+                gap: 24px
+            }
+
+            .tline::before {
+                top: 0;
+                bottom: 0;
+                left: 18px;
+                width: 2px;
+                height: auto;
+                background: linear-gradient(180deg, var(--saffron), var(--sl))
+            }
+
+            .tli {
+                flex-direction: row;
+                text-align: left;
+                gap: 16px
+            }
+
+            .tld {
+                margin-bottom: 0;
+                flex-shrink: 0
+            }
+
+            .rcon {
+                padding: 28px 20px
+            }
+
+            .ccard {
+                padding: 32px 20px
+            }
+
+            .fi2 {
+                flex-direction: column;
+                text-align: center
+            }
+
+            .fsoc {
+                justify-content: center
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="nb" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="ni">
+                <a href="#hero" class="nl" style="gap: 0;">
+                    <img src="./images/logo.png?v=3" alt="Swarajya Hack Fest Logo"
+                        style="height: 56px; width: auto; max-width: 200px; object-fit: contain;" />
+                </a>
+                <div class="nls" id="nls">
+                    <a href="#hero">Home</a><a href="#about">About</a><a href="#rounds">Rounds</a>
+                    <a href="#prizes">Prizes</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+                </div>
+                <button class="ham" id="ham" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div class="mnav" id="mnav">
+                <a href="#hero">Home</a><a href="#about">About</a><a href="#rounds">Rounds</a>
+                <a href="#prizes">Prizes</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hbg"></div>
+        <canvas id="pc"></canvas>
+        <div class="hc">
+            <div class="hbadge">🏆 National Level Hackathon</div>
+            <img class="hero-logo" src="./images/logo.png?v=3" alt="Swarajya Hack Fest"
+                style="max-width: 90%; max-height: 220px; object-fit: contain; margin: 0 auto 20px; filter: drop-shadow(0 0 40px rgba(255,107,0,0.4)); opacity: 0; animation: fu .7s ease .4s forwards;" />
+            <p class="htag">The Ultimate Arena for Cloud Innovators</p>
+            <p class="hmeta">Hybrid Cloud Hackathon · Online 24h + Offline Finals</p>
+            <div class="hprize"><img src="./images/prize-poll.png?v=3" style="height: 100px; width: auto;"
+                    alt="Prize Pool 20000" /></div>
+            <div class="hctas">
+                <a href="https://forms.gle/rrjgaeUzRRr3jVYK9" target="_blank" rel="noopener" id="btn-reg"
+                    class="btn btn-p">Register Now →</a>
+                <a href="#about" class="btn btn-o">Learn More ↓</a>
+            </div>
+            <div class="htimer">
+                <p class="tl">Registration closes · 13 March 2026</p>
+                <div class="tbs">
+                    <div class="tb"><span class="tn" id="td">00</span><span class="tu">Days</span></div>
+                    <div class="tb"><span class="tn" id="th">00</span><span class="tu">Hours</span></div>
+                    <div class="tb"><span class="tn" id="tm">00</span><span class="tu">Minutes</span></div>
+                    <div class="tb"><span class="tn" id="ts">00</span><span class="tu">Seconds</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <h2 class="sec-title reveal">About the Event</h2>
+            <div class="ag">
+                <div class="at reveal d1">
+                    <p>Swarajya Hack Fest is a hybrid coding hackathon organized by <strong>AWS Cloud Club –
+                            JDIET</strong> in collaboration with the Department of Computer Science, JDIET. The event
+                        aims to encourage students to build innovative, scalable, cloud-based solutions using modern
+                        technologies and AWS services — promoting problem-solving, innovation, teamwork, and real-world
+                        application development.</p>
+                </div>
+                <div class="sg">
+                    <div class="sc reveal d2"><span class="sv">24h</span><span class="sd">Online Coding</span></div>
+                    <div class="sc reveal d3"><span class="sv">₹20K</span><span class="sd">Prize Pool</span></div>
+                    <div class="sc reveal d4"><span class="sv">40</span><span class="sd">Offline Finals Teams</span>
+                    </div>
+                    <div class="sc reveal d5"><span class="sv">2–3</span><span class="sd">Members Per Team</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROUNDS -->
+    <section id="rounds">
+        <div class="container">
+            <h2 class="sec-title reveal">Event Rounds</h2>
+            <p class="sec-sub reveal">Online 24h coding marathon → Offline presentation finals</p>
+            <div class="rg">
+                <div class="rc reveal d1">
+                    <div class="ri">💻</div>
+                    <div class="rtt">Round 1: Online Hackathon</div>
+                    <div class="rd">15 – 16 March 2026 · 24-Hour Coding Challenge</div>
+                    <ul>
+                        <li>Online inauguration via Google Meet</li>
+                        <li>Problem statement announcement</li>
+                        <li>24-hour development window</li>
+                        <li>2 structured mentorship sessions</li>
+                        <li>Submission via Google Form (GitHub repo + deployment link + description)</li>
+                        <li>Top 30–35 teams shortlisted</li>
+                    </ul>
+                </div>
+                <div class="rc reveal d2">
+                    <div class="ri">🏛️</div>
+                    <div class="rtt">Round 2: Offline Final Round</div>
+                    <div class="rd">18 March 2026 · JDIET Campus, Yavatmal</div>
+                    <ul>
+                        <li>Top 40 teams present offline</li>
+                        <li>Live demo + architecture walkthrough</li>
+                        <li>Judged on: Innovation, Technical Quality, AWS Usage, Presentation</li>
+                        <li>Trophies + Certificates awarded</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tline reveal">
+                <div class="tli">
+                    <div class="tld">
+                        <div class="tldi"></div>
+                    </div>
+                    <div>
+                        <div class="tln">Registration Open</div>
+                        <div class="tldt">Now</div>
+                    </div>
+                </div>
+                <div class="tli">
+                    <div class="tld">
+                        <div class="tldi"></div>
+                    </div>
+                    <div>
+                        <div class="tln">Registration Closes</div>
+                        <div class="tldt">13 Mar 2026</div>
+                    </div>
+                </div>
+                <div class="tli">
+                    <div class="tld">
+                        <div class="tldi"></div>
+                    </div>
+                    <div>
+                        <div class="tln">Round 1 (Online)</div>
+                        <div class="tldt">15–16 Mar 2026</div>
+                    </div>
+                </div>
+                <div class="tli">
+                    <div class="tld">
+                        <div class="tldi"></div>
+                    </div>
+                    <div>
+                        <div class="tln">Round 2 (Offline)</div>
+                        <div class="tldt">18 Mar 2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIZES -->
+    <section id="prizes">
+        <div class="container">
+            <h2 class="sec-title reveal" style="display: none;">Prize Pool</h2>
+            <div class="sec-sub reveal" style="display: flex; justify-content: center; margin-bottom: 50px;">
+                <img src="./images/prize-poll.png?v=3" style="height: 90px; width: auto;" alt="Prize Pool ₹20,000" />
+            </div>
+            <div class="pw">
+                <div class="pc reveal d2">
+                    <span class="pm">🥈</span>
+                    <div class="pp">2nd Place</div>
+                    <span class="pa">₹6,500</span>
+                    <div class="pcred"><svg class="aws-icon" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576a.347.347 0 0 1 .056.176c0 .08-.048.16-.152.24l-.503.336a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.030-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.778.778 0 0 0-.215-.559c-.144-.151-.415-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.07.655-.206.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.743.167-1.155.167z"
+                                fill="#FF9040" />
+                        </svg> ₹2,500 AWS Credits</div>
+                    <div class="pperks">₹4,000 Cash · Trophy + Certificate</div>
+                </div>
+                <div class="pc first reveal d1">
+                    <span class="pm">🥇</span>
+                    <div class="pp">1st Place</div>
+                    <span class="pa">₹7,500</span>
+                    <div class="pcred"><svg class="aws-icon" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576a.347.347 0 0 1 .056.176c0 .08-.048.16-.152.24l-.503.336a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.030-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.778.778 0 0 0-.215-.559c-.144-.151-.415-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.07.655-.206.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.743.167-1.155.167z"
+                                fill="#FF9040" />
+                        </svg> ₹2,500 AWS Credits</div>
+                    <div class="pperks">₹5,000 Cash · Trophy + Certificate</div>
+                </div>
+                <div class="pc reveal d3">
+                    <span class="pm">🥉</span>
+                    <div class="pp">3rd Place</div>
+                    <span class="pa">₹3,000</span>
+                    <div class="pperks">Cash Prize · Trophy + Certificate</div>
+                </div>
+            </div>
+            <div class="pc consol reveal" style="margin-bottom:16px">
+                <div class="consol-inner">
+                    <span style="font-size:2rem">🎁</span>
+                    <div style="text-align:left">
+                        <div
+                            style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--sl);margin-bottom:4px">
+                            Consolation Prize</div>
+                        <div style="font-size:.9rem;color:var(--muted)">Swag &amp; goodies for the most creative / best
+                            ideas — even if not in top 3!</div>
+                    </div>
+                </div>
+            </div>
+            <p class="pnote reveal">All participants receive Participation Certificates. Shortlisted teams receive
+                Certificates of Merit. Trophies awarded to top 3 teams.</p>
+        </div>
+    </section>
+
+    <!-- RULES -->
+    <section id="rules">
+        <div class="container">
+            <h2 class="sec-title reveal">Rules &amp; Eligibility</h2>
+            <div class="rcon reveal">
+                <div class="rhighlight">🎓 <strong>Open to currently enrolled UG (Undergraduate) students only.</strong>
+                    PG / working professionals are not eligible.</div>
+                <div class="rhighlight" style="border-color:var(--sl)">🚀 <strong>No mandatory tech stack!</strong>
+                    Build with anything — React, Python, Node, Flutter, whatever you love! AWS services usage is
+                    encouraged and will earn bonus points during evaluation.</div>
+                <ul class="rgrid" style="margin-top:20px">
+                    <li>Teams of 2–3 members (no solo participation)</li>
+                    <li>All code written during the 24-hour window only</li>
+                    <li>Public GitHub repository required</li>
+                    <li>AI tools allowed ✅ (GitHub Copilot, AWS Kiro, etc.)</li>
+                    <li>No plagiarism — immediate disqualification</li>
+                    <li>Must attend at least one mentorship session</li>
+                    <li>AWS services usage gives evaluation priority</li>
+                    <li>Submission: GitHub link + deployment URL + description via Google Form</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- AWS CLOUD CLUB -->
+    <section id="club">
+        <div class="container">
+            <h2 class="sec-title reveal">Organized by AWS Cloud Club – JDIET</h2>
+            <div class="clg">
+                <div class="reveal d1">
+                    <img src="./images/logo.png?v=2" alt="Swarajya Hackfest Logo" class="cl-logo"
+                        onerror="this.style.display='none'" style="height: 60px; margin-bottom: 20px;" />
+                    <p class="clt">AWS Cloud Club – JDIET is a student-led technical initiative at Jawaharlal Darda
+                        Institute of Engineering and Technology, focused on building awareness and hands-on experience
+                        in cloud computing and modern technologies. The club regularly conducts workshops, hackathons,
+                        technical sessions, and cloud learning initiatives to help students develop practical skills for
+                        the modern tech industry.</p>
+                </div>
+                <div class="reveal d2">
+                    <div class="glass" style="padding:28px">
+                        <div
+                            style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;margin-bottom:20px;color:var(--sl)">
+                            Find Us Online</div>
+                        <a href="https://www.instagram.com/awscloudclub_jdiet?igsh=MTZ5a2t0NnE4MGJ5Mw==" target="_blank"
+                            rel="noopener" class="spill ig">
+                            <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram" />@awscloudclub_jdiet
+                        </a>
+                        <a href="https://chat.whatsapp.com/DEw9MvyogHH8OXj8Qce8d7" target="_blank" rel="noopener"
+                            class="spill wa">
+                            <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp" />AWS Cloud Club JDIET
+                        </a>
+                        <a href="https://www.linkedin.com/company/aws-cloud-club-jdiet/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbJgdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacrSUGopmax6tBB1buN5Gmm4I0HRejj2rvXfeWPcQy9ajZSe59DZmjQVQKIUA_aem_wKSzD559ti5mRY9fA_3jBA"
+                            target="_blank" rel="noopener" class="spill li">
+                            <img src="https://cdn.simpleicons.org/linkedin/white" alt="LinkedIn" />AWS Cloud Club JDIET
+                        </a>
+                        <a href="https://www.meetup.com/aws-cloud-club-at-jawaharlal-darda-institute-of-eng-and-tech/?utm_source=link&amp;utm_medium=referral&amp;utm_campaign=share-btn_savedevents_share_modal&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbI4lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacSkVFRO493xjpF5EaMqW4cBSqMeCmHzbs0zakrJL4NT7B3d0M4tOHoZjf4fg_aem_1FW5RRK1oHnRzFtb0tJVyw"
+                            target="_blank" rel="noopener" class="spill mu">
+                            <img src="https://cdn.simpleicons.org/meetup/white" alt="Meetup" />AWS Cloud Club JDIET
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="sec-title reveal">Frequently Asked Questions</h2>
+            <div class="fl reveal">
+                <div class="fi">
+                    <div class="fq" tabindex="0">Who can participate?<span class="fa-arrow">▾</span></div>
+                    <div class="fa">Open to <strong>currently enrolled UG (Undergraduate) students only</strong>. PG
+                        students and working professionals are not eligible.</div>
+                </div>
+                <div class="fi">
+                    <div class="fq" tabindex="0">What is the team size?<span class="fa-arrow">▾</span></div>
+                    <div class="fa">Teams must have 2 to 3 members. Solo participation is not allowed.</div>
+                </div>
+                <div class="fi">
+                    <div class="fq" tabindex="0">Is there a registration fee?<span class="fa-arrow">▾</span></div>
+                    <div class="fa">No! Registration is completely free of charge.</div>
+                </div>
+                <div class="fi">
+                    <div class="fq" tabindex="0">Do we have to use a specific tech stack?<span class="fa-arrow">▾</span>
+                    </div>
+                    <div class="fa">No! You can use any language, framework, or tool you prefer. However, using AWS
+                        services will be given priority during evaluation — so it's encouraged but not mandatory.</div>
+                </div>
+                <div class="fi">
+                    <div class="fq" tabindex="0">Will there be mentorship?<span class="fa-arrow">▾</span></div>
+                    <div class="fa">Yes! Two structured mentorship sessions will be conducted during Round 1.</div>
+                </div>
+                <div class="fi">
+                    <div class="fq" tabindex="0">How is Round 1 conducted?<span class="fa-arrow">▾</span></div>
+                    <div class="fa">Round 1 begins with an online kickoff on Google Meet, followed by a continuous
+                        24-hour coding window starting 15 March 2026.</div>
+                </div>
+                <div class="fi">
+                    <div class="fq" tabindex="0">How are teams shortlisted?<span class="fa-arrow">▾</span></div>
+                    <div class="fa">Based on innovation, technical quality, AWS service usage, and overall feasibility
+                        of the solution.</div>
+                </div>
+                <div class="fi">
+                    <div class="fq" tabindex="0">What do we need to submit?<span class="fa-arrow">▾</span></div>
+                    <div class="fa">Public GitHub repo link + deployment URL (if available) + project description via
+                        Google Form.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="sec-title reveal">Get in Touch</h2>
+            <div class="ccard reveal">
+                <div class="ci"><span class="cicon">📞</span>
+                    <div>
+                        <div class="cp">+91 91563 32109</div>
+                        <div class="csb">AWS Cloud Captain</div>
+                    </div>
+                </div>
+                <div class="ci"><span class="cicon">📞</span>
+                    <div>
+                        <div class="cp">+91 95794 33689</div>
+                        <div class="csb">Technical Lead</div>
+                    </div>
+                </div>
+                <div class="ci"><span class="cicon">🌐</span>
+                    <div>
+                        <div class="cp"><a href="https://swarajyahackfest.vercel.app"
+                                style="color:var(--sl)">swarajyahackfest.vercel.app</a></div>
+                        <div class="csb">Official Website</div>
+                    </div>
+                </div>
+                <div class="soc-row">
+                    <a href="https://www.instagram.com/awscloudclub_jdiet?igsh=MTZ5a2t0NnE4MGJ5Mw==" target="_blank"
+                        rel="noopener" class="spill ig">
+                        <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram" />@awscloudclub_jdiet
+                    </a>
+                    <a href="https://chat.whatsapp.com/DEw9MvyogHH8OXj8Qce8d7" target="_blank" rel="noopener"
+                        class="spill wa">
+                        <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp" />AWS Cloud Club JDIET
+                    </a>
+                    <a href="https://www.linkedin.com/company/aws-cloud-club-jdiet/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbJgdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacrSUGopmax6tBB1buN5Gmm4I0HRejj2rvXfeWPcQy9ajZSe59DZmjQVQKIUA_aem_wKSzD559ti5mRY9fA_3jBA"
+                        target="_blank" rel="noopener" class="spill li">
+                        <img src="https://cdn.simpleicons.org/linkedin/white" alt="LinkedIn" />AWS Cloud Club JDIET
+                    </a>
+                    <a href="https://www.meetup.com/aws-cloud-club-at-jawaharlal-darda-institute-of-eng-and-tech/?utm_source=link&amp;utm_medium=referral&amp;utm_campaign=share-btn_savedevents_share_modal&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbI4lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacSkVFRO493xjpF5EaMqW4cBSqMeCmHzbs0zakrJL4NT7B3d0M4tOHoZjf4fg_aem_1FW5RRK1oHnRzFtb0tJVyw"
+                        target="_blank" rel="noopener" class="spill mu">
+                        <img src="https://cdn.simpleicons.org/meetup/white" alt="Meetup" />AWS Cloud Club JDIET
+                    </a>
+                </div>
+                <div class="cbw">
+                    <a href="https://forms.gle/rrjgaeUzRRr3jVYK9" target="_blank" rel="noopener" class="btn btn-p"
+                        style="font-size:1.05rem;padding:16px 40px">Register Now —
+                        It's Free →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="fi2">
+                <p class="fc">© 2026 Swarajya Hack Fest · AWS Cloud Club JDIET · JDIET, Yavatmal</p>
+                <p class="fce">Powered by <span>AWS Community</span></p>
+                <div class="fsoc">
+                    <a href="https://www.instagram.com/awscloudclub_jdiet?igsh=MTZ5a2t0NnE4MGJ5Mw==" target="_blank"
+                        rel="noopener" class="ig" aria-label="Instagram"><img
+                            src="https://cdn.simpleicons.org/instagram/white" alt="Instagram" /></a>
+                    <a href="https://chat.whatsapp.com/DEw9MvyogHH8OXj8Qce8d7" target="_blank" rel="noopener" class="wa"
+                        aria-label="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp/white"
+                            alt="WhatsApp" /></a>
+                    <a href="https://www.linkedin.com/company/aws-cloud-club-jdiet/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbJgdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacrSUGopmax6tBB1buN5Gmm4I0HRejj2rvXfeWPcQy9ajZSe59DZmjQVQKIUA_aem_wKSzD559ti5mRY9fA_3jBA"
+                        target="_blank" rel="noopener" class="li" aria-label="LinkedIn"><img
+                            src="https://cdn.simpleicons.org/linkedin/white" alt="LinkedIn" /></a>
+                    <a href="https://www.meetup.com/aws-cloud-club-at-jawaharlal-darda-institute-of-eng-and-tech/?utm_source=link&amp;utm_medium=referral&amp;utm_campaign=share-btn_savedevents_share_modal&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbI4lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacSkVFRO493xjpF5EaMqW4cBSqMeCmHzbs0zakrJL4NT7B3d0M4tOHoZjf4fg_aem_1FW5RRK1oHnRzFtb0tJVyw"
+                        target="_blank" rel="noopener" class="mu" aria-label="Meetup"><img
+                            src="https://cdn.simpleicons.org/meetup/white" alt="Meetup" /></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll
+        const nb = document.getElementById('nb');
+        window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 50), { passive: true });
+
+        // Active nav link
+        const secs = document.querySelectorAll('section[id]'), nla = document.querySelectorAll('.nls a');
+        new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { nla.forEach(a => a.classList.remove('active')); const l = document.querySelector(`.nls a[href="#${e.target.id}"]`); if (l) l.classList.add('active'); } }), { threshold: .4 }).observe.bind(new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { nla.forEach(a => a.classList.remove('active')); const l = document.querySelector(`.nls a[href="#${e.target.id}"]`); if (l) l.classList.add('active') } }), { threshold: .4 }));
+        (() => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { nla.forEach(a => a.classList.remove('active')); const l = document.querySelector(`.nls a[href="#${e.target.id}"]`); if (l) l.classList.add('active') } }), { threshold: .4 }); secs.forEach(s => o.observe(s)) })();
+
+        // Hamburger
+        const ham = document.getElementById('ham'), mnav = document.getElementById('mnav');
+        ham.addEventListener('click', () => { const o = ham.classList.toggle('open'); mnav.classList.toggle('open', o); ham.setAttribute('aria-expanded', String(o)) });
+        mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mnav.classList.remove('open'); ham.setAttribute('aria-expanded', 'false') }));
+
+        // Scroll reveal
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target) } }), { threshold: .12 });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+        // Countdown
+        function tick() {
+            const dl = new Date('2026-03-13T23:59:59+05:30').getTime(), diff = dl - Date.now();
+            if (diff <= 0) { ['td', 'th', 'tm', 'ts'].forEach(id => document.getElementById(id).textContent = '00'); return }
+            const d = Math.floor(diff / 86400000), h = Math.floor(diff % 86400000 / 3600000), m = Math.floor(diff % 3600000 / 60000), s = Math.floor(diff % 60000 / 1000);
+            document.getElementById('td').textContent = String(d).padStart(2, '0');
+            document.getElementById('th').textContent = String(h).padStart(2, '0');
+            document.getElementById('tm').textContent = String(m).padStart(2, '0');
+            document.getElementById('ts').textContent = String(s).padStart(2, '0');
+        }
+        tick(); setInterval(tick, 1000);
+
+        // FAQ
+        document.querySelectorAll('.fq').forEach(q => {
+            const toggle = () => { const fi = q.parentElement, op = fi.classList.contains('open'); document.querySelectorAll('.fi').forEach(i => i.classList.remove('open')); if (!op) fi.classList.add('open') };
+            q.addEventListener('click', toggle);
+            q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() } });
+        });
+
+        // Canvas particles
+        (() => {
+            const c = document.getElementById('pc'), ctx = c.getContext('2d');
+            let W, H, pts = [];
+            const resize = () => { W = c.width = c.offsetWidth; H = c.height = c.offsetHeight };
+            const cols = ['#FF6B00', '#FF9040', '#FFAA55', '#FF5500'];
+            class P {
+                constructor() { this.reset(true) }
+                reset(init) {
+                    this.x = Math.random() * W; this.y = init ? Math.random() * H : H + 10;
+                    this.r = Math.random() * 2.5 + .5; this.vx = (Math.random() - .5) * .4;
+                    this.vy = -(Math.random() * .7 + .3); this.a = Math.random() * .35 + .05;
+                    this.life = 0; this.ml = Math.random() * 300 + 200;
+                    this.col = cols[Math.floor(Math.random() * 4)];
+                }
+                update() { this.x += this.vx + Math.sin(this.life * .02) * .3; this.y += this.vy; this.life++; if (this.y < -10 || this.life > this.ml) this.reset() }
+                draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fillStyle = this.col; ctx.globalAlpha = this.a; ctx.fill() }
+            }
+            window.addEventListener('resize', resize, { passive: true });
+            resize(); pts = Array.from({ length: 65 }, () => new P());
+            (function loop() { ctx.clearRect(0, 0, W, H); pts.forEach(p => { p.update(); p.draw() }); ctx.globalAlpha = 1; requestAnimationFrame(loop) })();
+        })();
+    </script>
+</body>
+
+</html>
