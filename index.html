@@ -1142,14 +1142,20 @@
             }
 
             .pw {
-                flex-direction: column;
-                align-items: center
+                flex-direction: column !important;
+                align-items: center !important
             }
 
-            .pc,
             .pc.first {
+                order: -1;
+                transform: scale(1) !important;
                 width: 100%;
-                max-width: 320px
+                max-width: 320px !important
+            }
+
+            .pc {
+                width: 100%;
+                max-width: 320px !important
             }
 
             .tline {
@@ -1195,6 +1201,10 @@
             .fsoc {
                 justify-content: center
             }
+
+            .why-grid {
+                grid-template-columns: 1fr !important
+            }
         }
     </style>
 </head>
@@ -1211,6 +1221,10 @@
                 </a>
                 <div class="nls" id="nls">
                     <a href="#hero">Home</a><a href="#about">About</a><a href="#rounds">Rounds</a>
+                    <a href="./problem-statement.html" style="color:var(--saffron);font-weight:600"
+                        title="Problem Statement"><span
+                            style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--saffron);margin-right:5px;vertical-align:middle;box-shadow:0 0 6px var(--saffron)"></span>Problem
+                        Statement</a>
                     <a href="#prizes">Prizes</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
                 </div>
                 <button class="ham" id="ham" aria-label="Toggle menu" aria-expanded="false">
@@ -1219,6 +1233,7 @@
             </div>
             <div class="mnav" id="mnav">
                 <a href="#hero">Home</a><a href="#about">About</a><a href="#rounds">Rounds</a>
+                <a href="./problem-statement.html" style="color:var(--saffron);font-weight:600">🔥 Problem Statement</a>
                 <a href="#prizes">Prizes</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
             </div>
         </div>
@@ -1229,17 +1244,26 @@
         <div class="hbg"></div>
         <canvas id="pc"></canvas>
         <div class="hc">
+            <p
+                style="font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px;opacity:0;animation:fu .7s ease .1s forwards">
+                AWS Cloud Club JDIET Presents</p>
             <div class="hbadge">🏆 National Level Hackathon</div>
             <img class="hero-logo" src="./images/logo.png?v=3" alt="Swarajya Hack Fest"
                 style="max-width: 90%; max-height: 220px; object-fit: contain; margin: 0 auto 20px; filter: drop-shadow(0 0 40px rgba(255,107,0,0.4)); opacity: 0; animation: fu .7s ease .4s forwards;" />
             <p class="htag">The Ultimate Arena for Cloud Innovators</p>
             <p class="hmeta">Hybrid Cloud Hackathon · Online 24h + Offline Finals</p>
+            <p
+                style="font-size:.9rem;color:rgba(255,255,255,.75);margin-top:10px;opacity:0;animation:fu .7s ease .8s forwards;display:flex;align-items:center;justify-content:center;gap:8px">
+                Powered by <img src="./images/aws-logo.png" alt="AWS"
+                    style="height:24px;width:auto;vertical-align:middle"
+                    onerror="this.outerHTML='<strong style=color:var(--saffron)>[AWS]</strong>'"> Community</p>
             <div class="hprize"><img src="./images/prize-poll.png?v=3" style="height: 100px; width: auto;"
                     alt="Prize Pool 20000" /></div>
             <div class="hctas">
                 <a href="https://forms.gle/rrjgaeUzRRr3jVYK9" target="_blank" rel="noopener" id="btn-reg"
                     class="btn btn-p">Register Now →</a>
-                <a href="#about" class="btn btn-o">Learn More ↓</a>
+                <a href="./problem-statement.html" class="btn btn-o"
+                    style="border-color:var(--saffron);color:var(--saffron)">View Problem Statement →</a>
             </div>
             <div class="htimer">
                 <p class="tl">Registration closes · 13 March 2026</p>
@@ -1248,6 +1272,107 @@
                     <div class="tb"><span class="tn" id="th">00</span><span class="tu">Hours</span></div>
                     <div class="tb"><span class="tn" id="tm">00</span><span class="tu">Minutes</span></div>
                     <div class="tb"><span class="tn" id="ts">00</span><span class="tu">Seconds</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section id="sponsors" style="padding:60px 0;background:rgba(0,0,0,.18)">
+        <div class="container">
+            <h2 class="sec-title reveal">Proudly Sponsored By</h2>
+            <p class="sec-sub reveal">Our amazing sponsors make this possible</p>
+            <div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px">
+                <div class="reveal d1"
+                    style="background:white;border-radius:12px;padding:12px;width:320px;height:180px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+                    <img src="./images/sponsored-logo/sponser-1.png" alt="Sponsor 1"
+                        style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(1.35);" />
+                </div>
+                <div class="reveal d2"
+                    style="background:white;border-radius:12px;padding:12px;width:320px;height:180px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+                    <img src="./images/sponsored-logo/sponser-2.png" alt="Sponsor 2"
+                        style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(1.35);" />
+                </div>
+            </div>
+
+            <h3 class="sec-title reveal" style="font-size: 1.8rem; margin-top: 60px;">Supporting Partners</h3>
+            <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:32px">
+                <div class="reveal d1"
+                    style="background:white;border-radius:12px;padding:12px;width:300px;height:160px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+                    <img src="./images/supported-by-logo/aws-logo.png" alt="AWS Logo"
+                        style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(1.35);" />
+                </div>
+                <div class="reveal d2"
+                    style="background:white;border-radius:12px;padding:12px;width:300px;height:160px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+                    <img src="./images/supported-by-logo/jdiet-logo.png" alt="JDIET Logo"
+                        style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(1.05);" />
+                </div>
+                <div class="reveal d3"
+                    style="background:white;border-radius:12px;padding:12px;width:300px;height:160px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+                    <img src="./images/supported-by-logo/cloud-club-logo.png" alt="Cloud Club Logo"
+                        style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(1.25);" />
+                </div>
+            </div>
+
+            <p style="text-align:center;font-style:italic;font-size:.85rem;color:var(--muted)" class="reveal">
+                <em>Interested in sponsoring? Contact us at the details below.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- WHY PARTICIPATE -->
+    <section id="why">
+        <div class="container">
+            <h2 class="sec-title reveal">Why Participate in Swarajya Hack Fest?</h2>
+            <p class="sec-sub reveal">More than a hackathon — it's a launchpad</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px" class="why-grid">
+                <div class="glass why-card reveal d1" style="text-align:center">
+                    <div style="font-size:2rem;margin-bottom:12px">☁️</div>
+                    <div
+                        style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--sl);margin-bottom:8px">
+                        Build with Cloud</div>
+                    <p style="font-size:.88rem;color:var(--muted);line-height:1.65">Get hands-on experience with real
+                        AWS cloud services and modern tech stacks in a live, high-pressure environment</p>
+                </div>
+                <div class="glass why-card reveal d2" style="text-align:center">
+                    <div style="font-size:2rem;margin-bottom:12px">🧠</div>
+                    <div
+                        style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--sl);margin-bottom:8px">
+                        Solve Real Problems</div>
+                    <p style="font-size:.88rem;color:var(--muted);line-height:1.65">Work on impactful problem statements
+                        that address real-world challenges — not just toy projects</p>
+                </div>
+                <div class="glass why-card reveal d3" style="text-align:center">
+                    <div style="font-size:2rem;margin-bottom:12px">🤝</div>
+                    <div
+                        style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--sl);margin-bottom:8px">
+                        Mentorship Access</div>
+                    <p style="font-size:.88rem;color:var(--muted);line-height:1.65">Get guided support from experienced
+                        mentors during the 24-hour online round</p>
+                </div>
+                <div class="glass why-card reveal d1" style="text-align:center">
+                    <div style="font-size:2rem;margin-bottom:12px">🏆</div>
+                    <div
+                        style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--sl);margin-bottom:8px">
+                        Win Big</div>
+                    <p style="font-size:.88rem;color:var(--muted);line-height:1.65">Compete for ₹20,000 in prizes
+                        including cash and AWS Cloud Credits</p>
+                </div>
+                <div class="glass why-card reveal d2" style="text-align:center">
+                    <div style="font-size:2rem;margin-bottom:12px">📜</div>
+                    <div
+                        style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--sl);margin-bottom:8px">
+                        Get Certified</div>
+                    <p style="font-size:.88rem;color:var(--muted);line-height:1.65">All participants receive
+                        certificates. Shortlisted teams receive Certificates of Merit</p>
+                </div>
+                <div class="glass why-card reveal d3" style="text-align:center">
+                    <div style="font-size:2rem;margin-bottom:12px">🚀</div>
+                    <div
+                        style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--sl);margin-bottom:8px">
+                        Grow Your Network</div>
+                    <p style="font-size:.88rem;color:var(--muted);line-height:1.65">Connect with like-minded developers,
+                        cloud enthusiasts, and industry professionals</p>
                 </div>
             </div>
         </div>
@@ -1268,7 +1393,7 @@
                 <div class="sg">
                     <div class="sc reveal d2"><span class="sv">24h</span><span class="sd">Online Coding</span></div>
                     <div class="sc reveal d3"><span class="sv">₹20K</span><span class="sd">Prize Pool</span></div>
-                    <div class="sc reveal d4"><span class="sv">40</span><span class="sd">Offline Finals Teams</span>
+                    <div class="sc reveal d4"><span class="sv">2</span><span class="sd">Rounds: Online + Offline</span>
                     </div>
                     <div class="sc reveal d5"><span class="sv">2–3</span><span class="sd">Members Per Team</span></div>
                 </div>
@@ -1284,27 +1409,43 @@
             <div class="rg">
                 <div class="rc reveal d1">
                     <div class="ri">💻</div>
-                    <div class="rtt">Round 1: Online Hackathon</div>
-                    <div class="rd">15 – 16 March 2026 · 24-Hour Coding Challenge</div>
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+                        <div class="rtt" style="margin-bottom:0">Round 1: Online Hackathon</div>
+                        <span
+                            style="background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);color:#4ade80;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.05em">FREE</span>
+                    </div>
+                    <div class="rd">15 – 16 March 2026 · 24-Hour Online Coding Challenge</div>
                     <ul>
-                        <li>Online inauguration via Google Meet</li>
-                        <li>Problem statement announcement</li>
-                        <li>24-hour development window</li>
-                        <li>2 structured mentorship sessions</li>
-                        <li>Submission via Google Form (GitHub repo + deployment link + description)</li>
-                        <li>Top 30–35 teams shortlisted</li>
+                        <li>🎯 Online inauguration &amp; problem statement reveal via Google Meet</li>
+                        <li>⏱️ 24-hour continuous development window begins immediately after</li>
+                        <li>👨‍🏫 2 structured mentorship sessions to support your team</li>
+                        <li>📤 Submit via Google Form: GitHub repo + deployment link + project description</li>
+                        <li>✅ <strong>Shortlisted teams will advance to Round 2</strong></li>
                     </ul>
+                    <div
+                        style="margin-top:16px;background:rgba(34,197,94,.08);border-left:3px solid #4ade80;border-radius:8px;padding:10px 14px;font-size:.88rem;color:#4ade80">
+                        🆓 Round 1 is completely FREE to participate</div>
                 </div>
                 <div class="rc reveal d2">
                     <div class="ri">🏛️</div>
-                    <div class="rtt">Round 2: Offline Final Round</div>
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+                        <div class="rtt" style="margin-bottom:0">Round 2: Offline Final Round</div>
+                        <span
+                            style="background:rgba(255,107,0,.15);border:1px solid rgba(255,107,0,.4);color:var(--sl);font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.05em">PAID</span>
+                    </div>
                     <div class="rd">18 March 2026 · JDIET Campus, Yavatmal</div>
                     <ul>
-                        <li>Top 40 teams present offline</li>
-                        <li>Live demo + architecture walkthrough</li>
-                        <li>Judged on: Innovation, Technical Quality, AWS Usage, Presentation</li>
-                        <li>Trophies + Certificates awarded</li>
+                        <li>🏆 Shortlisted teams from Round 1 present their projects offline</li>
+                        <li>🎤 Each team gets <strong>10 minutes total:</strong> 5 min pitch + 5 min Q&amp;A</li>
+                        <li>📊 Presentation must highlight: Problem solving, Technical execution, Scalability &amp;
+                            future potential</li>
+                        <li>💻 <strong>Live demos strongly encouraged</strong></li>
+                        <li>⚖️ Judges evaluate: Impact, Implementation quality, Originality</li>
+                        <li>🎖️ Winners announced; Trophies + Certificates awarded</li>
                     </ul>
+                    <div
+                        style="margin-top:16px;background:rgba(255,107,0,.08);border-left:3px solid var(--saffron);border-radius:8px;padding:10px 14px;font-size:.88rem;color:var(--sl)">
+                        💳 Entry Fee: ₹300 per team</div>
                 </div>
             </div>
             <div class="tline reveal">
@@ -1355,47 +1496,56 @@
             <div class="sec-sub reveal" style="display: flex; justify-content: center; margin-bottom: 50px;">
                 <img src="./images/prize-poll.png?v=3" style="height: 90px; width: auto;" alt="Prize Pool ₹20,000" />
             </div>
-            <div class="pw">
-                <div class="pc reveal d2">
+            <div class="pw"
+                style="display:flex; align-items:stretch; justify-content:center; gap:24px; flex-wrap:wrap;">
+                <div class="pc reveal d2"
+                    style="flex:1; min-width:260px; max-width:320px; display:flex; flex-direction:column; padding:40px 20px;">
                     <span class="pm">🥈</span>
                     <div class="pp">2nd Place</div>
-                    <span class="pa">₹6,500</span>
-                    <div class="pcred"><svg class="aws-icon" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576a.347.347 0 0 1 .056.176c0 .08-.048.16-.152.24l-.503.336a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.030-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.778.778 0 0 0-.215-.559c-.144-.151-.415-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.07.655-.206.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.743.167-1.155.167z"
-                                fill="#FF9040" />
-                        </svg> ₹2,500 AWS Credits</div>
-                    <div class="pperks">₹4,000 Cash · Trophy + Certificate</div>
+                    <span class="pa" style="margin-bottom:16px; display:block">₹6,500</span>
+                    <div style="font-size:.95rem; font-weight:600; margin-bottom:4px">₹4,000 Cash + ₹2,500 AWS Cloud
+                        Credits</div>
+                    <div style="font-size:.8rem; color:var(--muted); margin-bottom:20px">(can be used for your cloud
+                        projects)</div>
+                    <div class="pperks" style="font-size:.85rem; color:var(--muted); margin-top:auto">+ Trophy +
+                        Certificate + Goodies</div>
                 </div>
-                <div class="pc first reveal d1">
+                <div class="pc first reveal d1"
+                    style="flex:1; min-width:280px; max-width:350px; transform:scale(1.05); z-index:2; border-color:var(--saffron); box-shadow:0 0 30px rgba(255,107,0,0.15); display:flex; flex-direction:column; padding:50px 20px;">
                     <span class="pm">🥇</span>
                     <div class="pp">1st Place</div>
-                    <span class="pa">₹7,500</span>
-                    <div class="pcred"><svg class="aws-icon" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576a.347.347 0 0 1 .056.176c0 .08-.048.16-.152.24l-.503.336a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.030-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.778.778 0 0 0-.215-.559c-.144-.151-.415-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.07.655-.206.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.743.167-1.155.167z"
-                                fill="#FF9040" />
-                        </svg> ₹2,500 AWS Credits</div>
-                    <div class="pperks">₹5,000 Cash · Trophy + Certificate</div>
+                    <span class="pa" style="margin-bottom:16px; display:block">₹7,500</span>
+                    <div style="font-size:1rem; font-weight:700; color:var(--sl); margin-bottom:4px">₹5,000 Cash +
+                        ₹2,500 AWS Cloud Credits</div>
+                    <div style="font-size:.8rem; color:var(--muted); margin-bottom:20px">(can be used for your cloud
+                        projects)</div>
+                    <div class="pperks" style="font-size:.85rem; color:var(--muted); margin-top:auto">+ Trophy +
+                        Certificate + Goodies</div>
                 </div>
-                <div class="pc reveal d3">
+                <div class="pc reveal d3"
+                    style="flex:1; min-width:260px; max-width:320px; display:flex; flex-direction:column; padding:40px 20px;">
                     <span class="pm">🥉</span>
                     <div class="pp">3rd Place</div>
-                    <span class="pa">₹3,000</span>
-                    <div class="pperks">Cash Prize · Trophy + Certificate</div>
+                    <span class="pa" style="margin-bottom:16px; display:block">₹3,000</span>
+                    <div style="font-size:.95rem; font-weight:600; margin-bottom:4px">Cash Prize</div>
+                    <div style="font-size:.8rem; color:transparent; margin-bottom:20px; user-select:none">&nbsp;</div>
+                    <div class="pperks" style="font-size:.85rem; color:var(--muted); margin-top:auto">+ Trophy +
+                        Certificate + Goodies</div>
                 </div>
             </div>
-            <div class="pc consol reveal" style="margin-bottom:16px">
-                <div class="consol-inner">
-                    <span style="font-size:2rem">🎁</span>
-                    <div style="text-align:left">
+            <div class="pc consol reveal"
+                style="margin:0 auto 16px; max-width:700px; padding:30px; display:flex; justify-content:center;">
+                <div class="consol-inner" style="display:flex; align-items:center; gap:24px; text-align:left;">
+                    <span style="font-size:2.5rem; flex-shrink:0">🎁</span>
+                    <div>
                         <div
-                            style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--sl);margin-bottom:4px">
+                            style="font-family:'Cinzel',serif; font-size:1.1rem; font-weight:700; color:var(--sl); margin-bottom:6px">
                             Consolation Prize</div>
-                        <div style="font-size:.9rem;color:var(--muted)">Swag &amp; goodies for the most creative / best
+                        <div style="font-size:.95rem; color:var(--muted); margin-bottom:6px">Swag &amp; goodies for the
+                            most creative / best
                             ideas — even if not in top 3!</div>
+                        <div style="font-size:.85rem; color:rgba(255,255,255,0.4); font-style:italic">Also certificates
+                            for all round one and round two members.</div>
                     </div>
                 </div>
             </div>
@@ -1411,7 +1561,11 @@
             <div class="rcon reveal">
                 <div class="rhighlight">🎓 <strong>Open to currently enrolled UG (Undergraduate) students only.</strong>
                     PG / working professionals are not eligible.</div>
-                <div class="rhighlight" style="border-color:var(--sl)">🚀 <strong>No mandatory tech stack!</strong>
+                <div class="rhighlight" style="border-color:#a78bfa; margin-top:16px;">📋 <strong>Must build a solution
+                        for a problem statement from the official provided list.</strong> Custom problem statements are
+                    not accepted.</div>
+                <div class="rhighlight" style="border-color:var(--sl); margin-top:16px;">🚀 <strong>No mandatory tech
+                        stack!</strong>
                     Build with anything — React, Python, Node, Flutter, whatever you love! AWS services usage is
                     encouraged and will earn bonus points during evaluation.</div>
                 <ul class="rgrid" style="margin-top:20px">
@@ -1423,6 +1577,7 @@
                     <li>Must attend at least one mentorship session</li>
                     <li>AWS services usage gives evaluation priority</li>
                     <li>Submission: GitHub link + deployment URL + description via Google Form</li>
+                    <li>Valid student ID / proof of enrollment required at registration</li>
                 </ul>
             </div>
         </div>
@@ -1432,38 +1587,21 @@
     <section id="club">
         <div class="container">
             <h2 class="sec-title reveal">Organized by AWS Cloud Club – JDIET</h2>
-            <div class="clg">
-                <div class="reveal d1">
-                    <img src="./images/logo.png?v=2" alt="Swarajya Hackfest Logo" class="cl-logo"
-                        onerror="this.style.display='none'" style="height: 60px; margin-bottom: 20px;" />
+            <div
+                style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;max-width:780px;margin:0 auto">
+                <div class="reveal d1" style="flex-shrink:0">
+                    <div
+                        style="width:110px;height:110px;border-radius:14px;overflow:hidden;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;padding:10px;box-shadow:0 4px 20px rgba(0,0,0,0.35)">
+                        <img src="./images/cloudclub-logo.png" alt="AWS Cloud Club JDIET Logo"
+                            style="width:100%;height:100%;object-fit:contain;display:block;" />
+                    </div>
+                </div>
+                <div class="reveal d2" style="flex:1;min-width:260px">
                     <p class="clt">AWS Cloud Club – JDIET is a student-led technical initiative at Jawaharlal Darda
                         Institute of Engineering and Technology, focused on building awareness and hands-on experience
                         in cloud computing and modern technologies. The club regularly conducts workshops, hackathons,
                         technical sessions, and cloud learning initiatives to help students develop practical skills for
                         the modern tech industry.</p>
-                </div>
-                <div class="reveal d2">
-                    <div class="glass" style="padding:28px">
-                        <div
-                            style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;margin-bottom:20px;color:var(--sl)">
-                            Find Us Online</div>
-                        <a href="https://www.instagram.com/awscloudclub_jdiet?igsh=MTZ5a2t0NnE4MGJ5Mw==" target="_blank"
-                            rel="noopener" class="spill ig">
-                            <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram" />@awscloudclub_jdiet
-                        </a>
-                        <a href="https://chat.whatsapp.com/DEw9MvyogHH8OXj8Qce8d7" target="_blank" rel="noopener"
-                            class="spill wa">
-                            <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp" />AWS Cloud Club JDIET
-                        </a>
-                        <a href="https://www.linkedin.com/company/aws-cloud-club-jdiet/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbJgdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacrSUGopmax6tBB1buN5Gmm4I0HRejj2rvXfeWPcQy9ajZSe59DZmjQVQKIUA_aem_wKSzD559ti5mRY9fA_3jBA"
-                            target="_blank" rel="noopener" class="spill li">
-                            <img src="https://cdn.simpleicons.org/linkedin/white" alt="LinkedIn" />AWS Cloud Club JDIET
-                        </a>
-                        <a href="https://www.meetup.com/aws-cloud-club-at-jawaharlal-darda-institute-of-eng-and-tech/?utm_source=link&amp;utm_medium=referral&amp;utm_campaign=share-btn_savedevents_share_modal&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbI4lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacSkVFRO493xjpF5EaMqW4cBSqMeCmHzbs0zakrJL4NT7B3d0M4tOHoZjf4fg_aem_1FW5RRK1oHnRzFtb0tJVyw"
-                            target="_blank" rel="noopener" class="spill mu">
-                            <img src="https://cdn.simpleicons.org/meetup/white" alt="Meetup" />AWS Cloud Club JDIET
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1551,7 +1689,7 @@
                     </a>
                     <a href="https://www.linkedin.com/company/aws-cloud-club-jdiet/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbJgdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacrSUGopmax6tBB1buN5Gmm4I0HRejj2rvXfeWPcQy9ajZSe59DZmjQVQKIUA_aem_wKSzD559ti5mRY9fA_3jBA"
                         target="_blank" rel="noopener" class="spill li">
-                        <img src="https://cdn.simpleicons.org/linkedin/white" alt="LinkedIn" />AWS Cloud Club JDIET
+                        <img src="./images/social/linkedin.png" alt="LinkedIn" />AWS Cloud Club JDIET
                     </a>
                     <a href="https://www.meetup.com/aws-cloud-club-at-jawaharlal-darda-institute-of-eng-and-tech/?utm_source=link&amp;utm_medium=referral&amp;utm_campaign=share-btn_savedevents_share_modal&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbI4lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacSkVFRO493xjpF5EaMqW4cBSqMeCmHzbs0zakrJL4NT7B3d0M4tOHoZjf4fg_aem_1FW5RRK1oHnRzFtb0tJVyw"
                         target="_blank" rel="noopener" class="spill mu">
@@ -1572,6 +1710,16 @@
         <div class="container">
             <div class="fi2">
                 <p class="fc">© 2026 Swarajya Hack Fest · AWS Cloud Club JDIET · JDIET, Yavatmal</p>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+                    <a href="#hero" style="font-size:.82rem;color:rgba(255,255,255,.4);transition:color .2s">Home</a>
+                    <a href="./problem-statement.html"
+                        style="font-size:.82rem;color:var(--saffron);font-weight:600">Problem Statement</a>
+                    <a href="#prizes"
+                        style="font-size:.82rem;color:rgba(255,255,255,.4);transition:color .2s">Prizes</a>
+                    <a href="#faq" style="font-size:.82rem;color:rgba(255,255,255,.4);transition:color .2s">FAQ</a>
+                    <a href="#contact"
+                        style="font-size:.82rem;color:rgba(255,255,255,.4);transition:color .2s">Contact</a>
+                </div>
                 <p class="fce">Powered by <span>AWS Community</span></p>
                 <div class="fsoc">
                     <a href="https://www.instagram.com/awscloudclub_jdiet?igsh=MTZ5a2t0NnE4MGJ5Mw==" target="_blank"
@@ -1582,7 +1730,7 @@
                             alt="WhatsApp" /></a>
                     <a href="https://www.linkedin.com/company/aws-cloud-club-jdiet/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbJgdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacrSUGopmax6tBB1buN5Gmm4I0HRejj2rvXfeWPcQy9ajZSe59DZmjQVQKIUA_aem_wKSzD559ti5mRY9fA_3jBA"
                         target="_blank" rel="noopener" class="li" aria-label="LinkedIn"><img
-                            src="https://cdn.simpleicons.org/linkedin/white" alt="LinkedIn" /></a>
+                            src="./images/social/linkedin.png" alt="LinkedIn" /></a>
                     <a href="https://www.meetup.com/aws-cloud-club-at-jawaharlal-darda-institute-of-eng-and-tech/?utm_source=link&amp;utm_medium=referral&amp;utm_campaign=share-btn_savedevents_share_modal&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAQbI4lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacSkVFRO493xjpF5EaMqW4cBSqMeCmHzbs0zakrJL4NT7B3d0M4tOHoZjf4fg_aem_1FW5RRK1oHnRzFtb0tJVyw"
                         target="_blank" rel="noopener" class="mu" aria-label="Meetup"><img
                             src="https://cdn.simpleicons.org/meetup/white" alt="Meetup" /></a>
