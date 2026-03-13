@@ -60,7 +60,7 @@
   - Two CTA buttons:
     - **`Register Now →`** (filled saffron, links to Google Form — placeholder `#register`)
     - **`Learn More ↓`** (outlined white, smooth scrolls to About section)
-  - Countdown timer: `Registration closes: 13 March 2026` — live JS countdown showing Days / Hours / Minutes / Seconds in glass boxes
+  - Countdown timer: `Registration closes: 14 March 2026, 11:00 PM` — live JS countdown showing Days / Hours / Minutes / Seconds in glass boxes
 
 ---
 
@@ -105,7 +105,7 @@
 
 Below the cards, a **horizontal timeline bar** with 4 milestones:
 1. `Registration Open` → Now
-2. `Registration Closes` → 13 March 2026
+2. `Registration Closes` → 14 March 2026, 11:00 PM
 3. `Round 1 (Online)` → 15–16 March 2026
 4. `Round 2 (Offline Finals)` → 18 March 2026
 
@@ -157,7 +157,7 @@ Below the cards, a **horizontal timeline bar** with 4 milestones:
 - Accordion-style FAQ (click to expand/collapse, smooth height transition):
   1. Who can participate? → Currently enrolled UG/PG students
   2. What is the team size? → 2 to 3 members (no solo)
-  3. Is there a registration fee? → Free to register
+  3. Is there a registration fee? → 1st round is free. For shortlisted teams, 2nd round has a ₹300 fee
   4. What technologies can we use? → Any modern tech; AWS services are strongly encouraged
   5. Will there be mentorship? → Yes, two structured mentorship sessions during Round 1
   6. How is Round 1 conducted? → Online via Google Meet kickoff + 24-hour coding
@@ -224,7 +224,7 @@ Below the cards, a **horizontal timeline bar** with 4 milestones:
 | 1st Prize | ₹10,000 |
 | 2nd Prize | ₹6,000 |
 | 3rd Prize | ₹4,000 |
-| Registration Deadline | 13 March 2026 |
+| Registration Deadline | 14 March 2026, 11:00 PM |
 | Round 1 | 15–16 March 2026 (Online, 24h) |
 | Round 2 | 18 March 2026 (Offline, JDIET Campus) |
 | Teams Shortlisted | Top 40 for offline round |
