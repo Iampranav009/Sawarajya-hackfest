@@ -889,6 +889,9 @@
         .spill img {
             width: 20px;
             height: 20px;
+        }
+
+        .spill.ig img, .spill.wa img, .spill.mu img {
             filter: brightness(0) invert(1)
         }
 
@@ -1089,6 +1092,9 @@
         .fsoc a img {
             width: 18px;
             height: 18px;
+        }
+
+        .fsoc a.ig img, .fsoc a.wa img, .fsoc a.mu img {
             filter: brightness(0) invert(1)
         }
 
@@ -1266,7 +1272,7 @@
                     style="border-color:var(--saffron);color:var(--saffron)">View Problem Statement →</a>
             </div>
             <div class="htimer">
-                <p class="tl">Registration closes · 13 March 2026</p>
+                <p class="tl">Registration closes · 14 March 2026, 11:00 PM</p>
                 <div class="tbs">
                     <div class="tb"><span class="tn" id="td">00</span><span class="tu">Days</span></div>
                     <div class="tb"><span class="tn" id="th">00</span><span class="tu">Hours</span></div>
@@ -1286,12 +1292,23 @@
                 <div class="reveal d1"
                     style="background:white;border-radius:12px;padding:12px;width:320px;height:180px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
                     <img src="./images/sponsored-logo/sponser-1.png" alt="Sponsor 1"
-                        style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(1.35);" />
+                        style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(1.15);" />
                 </div>
                 <div class="reveal d2"
                     style="background:white;border-radius:12px;padding:12px;width:320px;height:180px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
                     <img src="./images/sponsored-logo/sponser-2.png" alt="Sponsor 2"
+                        style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(0.95);" />
+                </div>
+                <div class="reveal d3"
+                    style="background:white;border-radius:12px;padding:12px;width:320px;height:180px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+                    <img src="./images/sponsored-logo/sponser-3.png" alt="Sponsor 3"
                         style="max-height:100%;max-width:100%;object-fit:contain;transform:scale(1.35);" />
+                </div>
+                <div class="reveal d4"
+                    style="background:white;border-radius:12px;padding:12px;width:320px;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);gap:8px;">
+                    <img src="./images/sponsored-logo/sponser-4.png" alt="Sponsor 4"
+                        style="max-height:100px;max-width:100%;object-fit:contain;border-radius:50%;" />
+                    <span style="color:#0a0a0a;font-weight:700;font-size:1.1rem;letter-spacing:0.5px;">AI Tools Hub</span>
                 </div>
             </div>
 
@@ -1464,7 +1481,7 @@
                     </div>
                     <div>
                         <div class="tln">Registration Closes</div>
-                        <div class="tldt">13 Mar 2026</div>
+                        <div class="tldt">14 Mar 2026, 11:00 PM</div>
                     </div>
                 </div>
                 <div class="tli">
@@ -1623,7 +1640,7 @@
                 </div>
                 <div class="fi">
                     <div class="fq" tabindex="0">Is there a registration fee?<span class="fa-arrow">▾</span></div>
-                    <div class="fa">No! Registration is completely free of charge.</div>
+                    <div class="fa">The 1st round (online) is free. For the shortlisted teams, the 2nd round (offline) has a registration fee of ₹300.</div>
                 </div>
                 <div class="fi">
                     <div class="fq" tabindex="0">Do we have to use a specific tech stack?<span class="fa-arrow">▾</span>
@@ -1760,7 +1777,7 @@
 
         // Countdown
         function tick() {
-            const dl = new Date('2026-03-13T23:59:59+05:30').getTime(), diff = dl - Date.now();
+            const dl = new Date('2026-03-14T23:00:00+05:30').getTime(), diff = dl - Date.now();
             if (diff <= 0) { ['td', 'th', 'tm', 'ts'].forEach(id => document.getElementById(id).textContent = '00'); return }
             const d = Math.floor(diff / 86400000), h = Math.floor(diff % 86400000 / 3600000), m = Math.floor(diff % 3600000 / 60000), s = Math.floor(diff % 60000 / 1000);
             document.getElementById('td').textContent = String(d).padStart(2, '0');
