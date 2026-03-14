@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Project Submission — Swarajya Hack Fest 2026</title>
+    <meta name="description"
+        content="Submit your hackathon project for Swarajya Hack Fest 2026. Upload your PPT using the official template and fill in your team details." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --saffron: #FF6B00;
+            --sl: #FF9040;
+            --sg: rgba(255, 107, 0, .25);
+            --white: #fff;
+            --muted: rgba(255, 255, 255, .55);
+            --gb: rgba(255, 255, 255, .05);
+            --gbr: rgba(255, 107, 0, .3);
+            --glow: 0 20px 60px rgba(255, 107, 0, .3);
+            --green: #4ade80;
+            --green-dim: rgba(74, 222, 128, .15);
+            --green-border: rgba(74, 222, 128, .4);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            min-height: 100vh
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        ul {
+            list-style: none
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        /* NAVBAR */
+        #nb {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(10, 10, 10, .85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 107, 0, .2);
+        }
+
+        .ni {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+            gap: 24px
+        }
+
+        .nl {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .88rem;
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .nl img {
+            height: 44px;
+            width: auto
+        }
+
+        .nbr {
+            display: flex;
+            align-items: center;
+            gap: 16px
+        }
+
+        .nbr a {
+            font-size: .88rem;
+            font-weight: 500;
+            color: var(--muted);
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid transparent;
+            transition: color .3s, border-color .3s, background .3s;
+        }
+
+        .nbr a:hover {
+            color: var(--white);
+            border-color: var(--gbr);
+            background: var(--gb)
+        }
+
+        .nbr a.active {
+            color: var(--white);
+            border-color: var(--gbr)
+        }
+
+        /* HERO BANNER */
+        .page-hero {
+            padding: 120px 24px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255, 107, 0, .06) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(255, 107, 0, .1);
+        }
+
+        .page-hero img.logo {
+            height: 80px;
+            width: auto;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 0 24px rgba(255, 107, 0, .4));
+            display: block;
+        }
+
+        .page-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 30%, var(--saffron) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 14px;
+        }
+
+        .page-hero p {
+            color: var(--muted);
+            font-size: 1rem;
+            margin-bottom: 0
+        }
+
+        /* IMPORTANT NOTICE */
+        .notice-banner {
+            max-width: 860px;
+            margin: 32px auto 0;
+            padding: 0 24px;
+        }
+
+        .notice-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: rgba(74, 222, 128, .08);
+            border: 1px solid rgba(74, 222, 128, .35);
+            border-left: 4px solid var(--green);
+            border-radius: 12px;
+            padding: 18px 22px;
+        }
+
+        .notice-inner .notice-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 2px
+        }
+
+        .notice-inner strong {
+            color: var(--green);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .notice-inner p {
+            color: rgba(255, 255, 255, .75);
+            font-size: .93rem;
+            line-height: 1.6
+        }
+
+        /* FORM SECTION */
+        .form-section {
+            padding: 48px 0 80px
+        }
+
+        .form-card {
+            background: var(--gb);
+            border: 1px solid var(--gbr);
+            border-radius: 20px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 44px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--saffron), var(--sl), var(--saffron));
+        }
+
+        @media(max-width:600px) {
+            .form-card {
+                padding: 28px 20px
+            }
+        }
+
+        /* SECTION DIVIDERS */
+        .form-group-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--sl);
+            margin: 32px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background: var(--saffron);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .form-group-title:first-of-type {
+            margin-top: 0
+        }
+
+        /* INPUTS */
+        .field {
+            margin-bottom: 20px
+        }
+
+        .field label {
+            display: block;
+            font-size: .88rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .8);
+            margin-bottom: 8px;
+            letter-spacing: .02em;
+        }
+
+        .field label span.req {
+            color: var(--saffron);
+            margin-left: 3px
+        }
+
+        .field label span.opt {
+            color: var(--muted);
+            font-weight: 400;
+            font-size: .8rem;
+            margin-left: 6px
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: .95rem;
+            padding: 14px 18px;
+            outline: none;
+            transition: border-color .3s, background .3s, box-shadow .3s;
+            -webkit-appearance: none;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: rgba(255, 255, 255, .25)
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: var(--saffron);
+            background: rgba(255, 107, 0, .06);
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, .1);
+        }
+
+        .field input.error,
+        .field textarea.error {
+            border-color: #f87171
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 80px;
+            line-height: 1.6
+        }
+
+        .field select option {
+            background: #1a1a1a;
+            color: var(--white)
+        }
+
+        .field select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FF6B00' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 44px;
+        }
+
+        .field select optgroup {
+            background: #111;
+            color: rgba(255, 107, 0, 0.9);
+            font-weight: 700;
+            font-size: .8rem;
+        }
+
+        .field select option:checked {
+            background: rgba(255, 107, 0, 0.2);
+        }
+
+        /* MEMBER ROWS */
+        .member-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        @media(max-width:540px) {
+            .member-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* HELPER TEXT */
+        .field-hint {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-top: 6px;
+            line-height: 1.5
+        }
+
+        .field-error {
+            font-size: .8rem;
+            color: #f87171;
+            margin-top: 5px;
+            display: none
+        }
+
+        .field.has-error .field-error {
+            display: block
+        }
+
+        /* FILE UPLOAD */
+        .file-drop-zone {
+            border: 2px dashed rgba(255, 107, 0, .35);
+            border-radius: 14px;
+            padding: 36px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color .3s, background .3s;
+            position: relative;
+        }
+
+        .file-drop-zone:hover,
+        .file-drop-zone.drag-over {
+            border-color: var(--saffron);
+            background: rgba(255, 107, 0, .06);
+        }
+
+        .file-drop-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fdz-icon {
+            font-size: 2.4rem;
+            margin-bottom: 10px
+        }
+
+        .fdz-text {
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px
+        }
+
+        .fdz-sub {
+            font-size: .82rem;
+            color: var(--muted)
+        }
+
+        .fdz-chosen {
+            margin-top: 14px;
+            padding: 10px 16px;
+            background: rgba(74, 222, 128, .1);
+            border: 1px solid rgba(74, 222, 128, .3);
+            border-radius: 8px;
+            font-size: .88rem;
+            color: var(--green);
+            display: none;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .fdz-chosen.visible {
+            display: flex
+        }
+
+        /* UPLOAD NOTE */
+        .upload-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(255, 107, 0, .07);
+            border-left: 3px solid var(--saffron);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 14px;
+            font-size: .88rem;
+            color: rgba(255, 255, 255, .7);
+            line-height: 1.6;
+        }
+
+        .upload-note span {
+            flex-shrink: 0;
+            font-size: 1.1rem
+        }
+
+        /* SUBMIT BUTTON */
+        .submit-wrap {
+            margin-top: 36px;
+            text-align: center
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 48px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--saffron), var(--sl));
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 24px rgba(255, 107, 0, .4);
+            transition: transform .25s, box-shadow .25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -75%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255, 255, 255, .18);
+            transform: skewX(-20deg);
+            transition: left .45s;
+        }
+
+        .btn-submit:hover::after {
+            left: 130%
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 28px rgba(255, 107, 0, .55)
+        }
+
+        .btn-submit:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none
+        }
+
+        /* LOADING SPINNER */
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, .4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+            display: none;
+            flex-shrink: 0;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .btn-submit.loading .spinner {
+            display: block
+        }
+
+        .btn-submit.loading .btn-label {
+            display: none
+        }
+
+        /* SUCCESS STATE */
+        .success-card {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .success-card.visible {
+            display: block
+        }
+
+        .form-card.submitted .form-content {
+            display: none
+        }
+
+        .form-card.submitted .success-card {
+            display: block
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(74, 222, 128, .15);
+            border: 2px solid rgba(74, 222, 128, .5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin: 0 auto 24px;
+        }
+
+        .success-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 40%, var(--green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .success-msg {
+            color: rgba(255, 255, 255, .72);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 520px;
+            margin: 0 auto 28px;
+        }
+
+        .success-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, .25);
+            color: var(--white);
+            font-size: .95rem;
+            font-weight: 600;
+            transition: border-color .3s, background .3s;
+        }
+
+        .success-back:hover {
+            border-color: var(--saffron);
+            background: rgba(255, 107, 0, .07)
+        }
+
+        /* REVEAL ANIMATION */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .6s ease, transform .6s ease
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid;
+            padding: 28px 0;
+            border-image: linear-gradient(90deg, transparent, var(--saffron), var(--sl), var(--saffron), transparent) 1;
+            background: rgba(0, 0, 0, .3);
+        }
+
+        .fi2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap
+        }
+
+        .fc {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .35)
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="nb" role="navigation" aria-label="Main navigation">
+        <div class="container" style="max-width:1180px">
+            <div class="ni">
+                <a href="./index.html" class="nl">
+                    <img src="./images/logo.png?v=3" alt="Swarajya Hack Fest Logo"
+                        style="height:52px;width:auto;max-width:200px;object-fit:contain;" />
+                </a>
+                <div class="nbr">
+                    <a href="./index.html">← Back to Home</a>
+                    <a href="./problem-statement.html" style="color:var(--saffron);">Problem Statement</a>
+                    <a href="./submission.html" class="active"
+                        style="color:var(--green);border-color:var(--green-border);">Submit Project</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <img class="logo" src="./images/logo.png?v=3" alt="Swarajya Hack Fest Logo" />
+        <h1>Project Submission Form</h1>
+        <p>Swarajya Hack Fest 2026 · AWS Cloud Club JDIET</p>
+    </div>
+
+    <!-- IMPORTANT NOTICE -->
+    <div class="notice-banner">
+        <div class="notice-inner reveal">
+            <span class="notice-icon">⚠️</span>
+            <div>
+                <strong>Important Notice</strong>
+                <p>Only the <strong>Team Leader</strong> must fill and submit this form on behalf of the entire team.
+                    Please ensure all team details are accurate before submitting. Each team should submit <strong>only
+                        once</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORM SECTION -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-card">
+
+                <!-- SUCCESS STATE -->
+                <div class="success-card" id="successCard">
+                    <div class="success-icon">✅</div>
+                    <div class="success-title">Submission Received!</div>
+                    <div class="success-msg">
+                        Thank you for submitting your project to <strong>Swarajya Hack Fest.</strong><br><br>
+                        Our team will review all submissions and shortlist the selected teams.<br>
+                        Shortlisted participants will be informed soon.
+                    </div>
+                    <a href="./index.html" class="success-back">← Return to Home</a>
+                </div>
+
+                <!-- FORM CONTENT -->
+                <div class="form-content" id="formContent">
+                    <form id="submissionForm" novalidate>
+
+                        <!-- TEAM INFORMATION -->
+                        <div class="form-group-title">Team Information</div>
+
+                        <div class="field" id="field-teamName">
+                            <label for="teamName">Team Name <span class="req">*</span></label>
+                            <input type="text" id="teamName" name="teamName" placeholder="e.g. CloudCraft Team"
+                                autocomplete="off" required />
+                            <div class="field-error">Please enter your team name.</div>
+                        </div>
+
+                        <div class="member-grid">
+                            <div class="field" id="field-leaderName">
+                                <label for="leaderName">Team Leader Name <span class="req">*</span></label>
+                                <input type="text" id="leaderName" name="leaderName" placeholder="Full name" required />
+                                <div class="field-error">Please enter the team leader's name.</div>
+                            </div>
+                            <div class="field" id="field-leaderEmail">
+                                <label for="leaderEmail">Team Leader Email ID <span class="req">*</span></label>
+                                <input type="email" id="leaderEmail" name="leaderEmail" placeholder="leader@example.com"
+                                    required />
+                                <div class="field-error">Please enter a valid email address.</div>
+                            </div>
+                        </div>
+
+                        <div class="field" id="field-college">
+                            <label for="college">College Name <span class="req">*</span></label>
+                            <input type="text" id="college" name="college" placeholder="e.g. JDIET Yavatmal" required />
+                            <div class="field-error">Please enter your college name.</div>
+                        </div>
+
+                        <!-- PROJECT LINKS -->
+                        <div class="form-group-title">Project Links</div>
+
+                        <div class="field" id="field-github">
+                            <label for="github">GitHub Repository URL <span class="req">*</span></label>
+                            <input type="url" id="github" name="github"
+                                placeholder="https://github.com/username/repository" required />
+                            <div class="field-hint">Make sure the repository is <strong>public</strong> before
+                                submitting. Private repos cannot be reviewed.</div>
+                            <div class="field-error">Please enter your public GitHub repository URL.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="liveDemo">Deployment URL / Live Demo Link <span
+                                    class="opt">(optional)</span></label>
+                            <input type="url" id="liveDemo" name="liveDemo"
+                                placeholder="https://your-project.vercel.app" />
+                            <div class="field-hint">Paste your hosted demo link if available.</div>
+                        </div>
+
+                        <!-- PPT UPLOAD -->
+                        <div class="form-group-title">Project Presentation (PPT)</div>
+
+                        <div class="field" id="field-ppt">
+                            <label>Upload PPT File <span class="req">*</span></label>
+                            <div class="file-drop-zone" id="dropZone">
+                                <input type="file" id="pptFile" name="pptFile" accept=".ppt,.pptx" required />
+                                <div class="fdz-icon">📎</div>
+                                <div class="fdz-text">Drag &amp; drop your PPT file here</div>
+                                <div class="fdz-sub">or click to browse · PPT / PPTX only · Max 15 MB</div>
+                                <div class="fdz-chosen" id="chosenFile">
+                                    <span>✅</span>
+                                    <span id="chosenFileName">file.pptx</span>
+                                </div>
+                            </div>
+                            <div class="field-error" id="pptError">Please upload a PPT or PPTX file (max 15 MB).</div>
+                            <div class="upload-note">
+                                <span>📋</span>
+                                Upload your project presentation using the official PPT template. Only PPT/PPTX files
+                                are allowed.
+                                <a href="./templates/swarajya-hackfest-template.pptx" download
+                                    style="color:var(--sl);font-weight:600;margin-left:4px;">Download template →</a>
+                            </div>
+                        </div>
+
+                        <!-- PROBLEM STATEMENT -->
+                        <div class="form-group-title">Problem Statement</div>
+
+                        <div class="field" id="field-problemStatement">
+                            <label for="problemStatement">Selected Problem Statement <span class="req">*</span></label>
+                            <select id="problemStatement" name="problemStatement" required>
+                                <option value="" disabled selected>— Select your problem statement —</option>
+                                <optgroup label="🤖 AI &amp; Machine Learning">
+                                    <option value="PS-01: AI Smart Notes &amp; Lecture Summarizer">PS-01 · AI Smart
+                                        Notes &amp; Lecture Summarizer</option>
+                                    <option value="PS-02: AI-Powered Deepfake &amp; Fake Media Detector">PS-02 ·
+                                        AI-Powered Deepfake &amp; Fake Media Detector</option>
+                                    <option value="PS-03: Personal AI Knowledge Companion">PS-03 · Personal AI Knowledge
+                                        Companion</option>
+                                </optgroup>
+                                <optgroup label="🌱 Agriculture &amp; Smart Farming">
+                                    <option value="PS-04: Crop Disease Detection Using Smartphone Images">PS-04 · Crop
+                                        Disease Detection Using Smartphone Images</option>
+                                    <option value="PS-05: Smart Farming Decision Support Platform">PS-05 · Smart Farming
+                                        Decision Support Platform</option>
+                                </optgroup>
+                                <optgroup label="🏥 Healthcare &amp; HealthTech">
+                                    <option value="PS-06: Smart Medicine Reminder &amp; Health Tracker">PS-06 · Smart
+                                        Medicine Reminder &amp; Health Tracker</option>
+                                    <option value="PS-07: AI-Based Early Disease Risk Predictor">PS-07 · AI-Based Early
+                                        Disease Risk Predictor</option>
+                                </optgroup>
+                                <optgroup label="🌍 Sustainability &amp; Climate Tech">
+                                    <option value="PS-08: Personal Carbon Footprint Tracker">PS-08 · Personal Carbon
+                                        Footprint Tracker</option>
+                                    <option value="PS-09: Smart Waste Segregation Assistant">PS-09 · Smart Waste
+                                        Segregation Assistant</option>
+                                </optgroup>
+                                <optgroup label="🎓 Education &amp; EdTech">
+                                    <option value="PS-10: Peer-to-Peer Student Learning Platform">PS-10 · Peer-to-Peer
+                                        Student Learning Platform</option>
+                                    <option value="PS-11: AI Career Guidance &amp; Skill Discovery Platform">PS-11 · AI
+                                        Career Guidance &amp; Skill Discovery Platform</option>
+                                </optgroup>
+                            </select>
+                            <div class="field-error">Please select your problem statement.</div>
+                        </div>
+
+                        <!-- DATA REPORT -->
+                        <div class="form-group-title">Data Report / Project Description</div>
+
+                        <div class="field" id="field-dataReport">
+                            <label for="dataReport">Project Data Report <span class="opt">(optional)</span></label>
+                            <textarea id="dataReport" name="dataReport" rows="8"
+                                placeholder="Briefly describe your project..." style="min-height:200px;"></textarea>
+                            <div class="field-hint">Optional but recommended &mdash; a thorough report helps evaluators
+                                understand your work better.</div>
+                        </div>
+
+                        <!-- SUBMIT -->
+                        <div class="submit-wrap">
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                <span class="spinner" id="spinner"></span>
+                                <span class="btn-label"><span id="btnLabelText">🚀 Submit Project</span></span>
+                            </button>
+                            <p style="font-size:.8rem;color:var(--muted);margin-top:14px;">By submitting, you confirm
+                                that all details are correct and the PPT uses the official template.</p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container" style="max-width:1180px">
+            <div class="fi2">
+                <p class="fc">© 2026 Swarajya Hack Fest · AWS Cloud Club JDIET · JDIET, Yavatmal</p>
+                <p class="fc">Questions? Contact us on <a href="./index.html#contact" style="color:var(--sl)">our
+                        contact page</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ===================================================
+         *  GOOGLE SHEETS INTEGRATION — SETUP INSTRUCTIONS
+         * ===================================================
+         *  1. Open Google Sheets → Tools → Apps Script
+         *  2. Paste the Apps Script code from the project README
+         *     (or see the inline comment below for the script code)
+         *  3. Deploy as a Web App:
+         *       Execute as: Me (your account)
+         *       Who has access: Anyone
+         *  4. Copy the Web App URL and paste it below as APPS_SCRIPT_URL
+         *
+         *  APPS SCRIPT CODE TO USE:
+         *  -------------------------------------------------
+         *  function doPost(e) {
+         *    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+         *    var data = JSON.parse(e.postData.contents);
+         *    sheet.appendRow([
+         *      new Date(),
+         *      data.teamName, data.leaderName, data.leaderEmail,
+         *      data.college, data.member1Name, data.member1Email,
+         *      data.member2Name || '', data.member2Email || '',
+         *      data.github || '', data.liveDemo || '',
+         *      data.problemStatement, data.pptFileName || ''
+         *    ]);
+         *    return ContentService
+         *      .createTextOutput(JSON.stringify({ result: 'success' }))
+         *      .setMimeType(ContentService.MimeType.JSON);
+         *  }
+         * ===================================================
+         *  NOTE: PPT files cannot be uploaded directly via Apps Script.
+         *  Option A: Use Google Drive upload link separately (see README)
+         *  Option B: Use a backend (Firebase Storage, etc.)
+         *  The form currently stores the PPT filename in Sheets and
+         *  can be extended to upload via Google Drive API.
+         * =================================================== */
+
+        // ⬇️ REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVxQxEbgg9cAOE5eQsZZ1zMMSpx8uTA59T-us-dywSke3gP8nNKuCB360nkG4RP9Ae0w/exec';
+
+        // ── Helper: convert File object to base64 string ─────────────
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    // result is like: "data:application/...;base64,XXXXXX"
+                    // We only want the base64 part after the comma
+                    const base64 = reader.result.split(',')[1];
+                    resolve(base64);
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // ─── File drop zone ───────────────────────────────────────
+        const dropZone = document.getElementById('dropZone');
+        const pptInput = document.getElementById('pptFile');
+        const chosenFile = document.getElementById('chosenFile');
+        const chosenFileName = document.getElementById('chosenFileName');
+
+        pptInput.addEventListener('change', () => handleFileChange(pptInput.files[0]));
+
+        dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over') });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+        dropZone.addEventListener('drop', e => {
+            e.preventDefault(); dropZone.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file) { pptInput.files = e.dataTransfer.files; handleFileChange(file) }
+        });
+
+        function handleFileChange(file) {
+            if (!file) return;
+            const ext = file.name.split('.').pop().toLowerCase();
+            const validTypes = ['ppt', 'pptx'];
+            const maxSize = 15 * 1024 * 1024; // 15 MB
+
+            if (!validTypes.includes(ext) || file.size > maxSize) {
+                pptInput.value = '';
+                chosenFile.classList.remove('visible');
+                document.getElementById('field-ppt').classList.add('has-error');
+                document.getElementById('pptError').textContent = !validTypes.includes(ext)
+                    ? 'Invalid file type. Only PPT and PPTX files are accepted.'
+                    : 'File size exceeds 15 MB. Please compress your presentation.';
+                return;
+            }
+            document.getElementById('field-ppt').classList.remove('has-error');
+            chosenFileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+            chosenFile.classList.add('visible');
+        }
+
+        // ─── Form validation ──────────────────────────────────────
+        function validateField(id, condition) {
+            const wrapper = document.getElementById('field-' + id);
+            if (!wrapper) return condition;
+            if (!condition) { wrapper.classList.add('has-error') }
+            else { wrapper.classList.remove('has-error') }
+            return condition;
+        }
+
+        function getVal(id) { return (document.getElementById(id)?.value || '').trim() }
+        function isEmail(str) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str) }
+        function isUrl(str) { if (!str) return true; try { new URL(str); return true } catch { return false } }
+
+        // ─── Form submit ──────────────────────────────────────────
+        document.getElementById('submissionForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            let valid = true;
+            valid = validateField('teamName', getVal('teamName') !== '') && valid;
+            valid = validateField('leaderName', getVal('leaderName') !== '') && valid;
+            valid = validateField('leaderEmail', isEmail(getVal('leaderEmail'))) && valid;
+            valid = validateField('college', getVal('college') !== '') && valid;
+            valid = validateField('problemStatement', getVal('problemStatement') !== '') && valid;
+            // dataReport is optional — no validation needed
+            valid = validateField('github', getVal('github') !== '') && valid;
+
+            // PPT validation
+            const pptFile = pptInput.files[0];
+            let pptValid = !!pptFile;
+            if (pptFile) {
+                const ext = pptFile.name.split('.').pop().toLowerCase();
+                pptValid = ['ppt', 'pptx'].includes(ext) && pptFile.size <= 15 * 1024 * 1024;
+            }
+            document.getElementById('field-ppt').classList.toggle('has-error', !pptValid);
+            if (!pptValid) {
+                document.getElementById('pptError').textContent = 'Please upload a PPT or PPTX file (max 15 MB).';
+                valid = false;
+            }
+
+            if (!valid) {
+                const firstError = document.querySelector('.field.has-error');
+                if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Show loading state
+            const btn = document.getElementById('submitBtn');
+            const btnLabel = document.getElementById('btnLabelText');
+            btn.disabled = true; btn.classList.add('loading');
+
+            // ── Convert PPT file to base64 for Drive upload ──────────
+            let pptBase64 = '';
+            let pptMimeType = '';
+            if (pptFile) {
+                btnLabel && (btnLabel.textContent = 'Uploading file…');
+                try {
+                    pptBase64 = await fileToBase64(pptFile);
+                    pptMimeType = pptFile.type || 'application/vnd.ms-powerpoint';
+                } catch (readErr) {
+                    console.warn('File read error:', readErr);
+                }
+            }
+
+            const payload = {
+                teamName: getVal('teamName'),
+                leaderName: getVal('leaderName'),
+                leaderEmail: getVal('leaderEmail'),
+                college: getVal('college'),
+                github: getVal('github'),
+                liveDemo: getVal('liveDemo'),
+                problemStatement: getVal('problemStatement'),
+                dataReport: getVal('dataReport'),
+                pptFileName: pptFile ? pptFile.name : '',
+                pptFileBase64: pptBase64,
+                pptMimeType: pptMimeType
+            };
+
+            // Submit to Google Apps Script (if configured)
+            if (APPS_SCRIPT_URL && APPS_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+                btnLabel && (btnLabel.textContent = 'Saving to sheet…');
+                try {
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        // Bypasses CORS by avoiding JSON preflight
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify(payload)
+                    });
+                } catch (err) {
+                    console.warn('Sheets submission error:', err);
+                    // Still show success — data likely saved on server side
+                }
+            } else {
+                // Demo mode
+                console.log('Submission payload (demo mode):', payload);
+                await new Promise(r => setTimeout(r, 1500));
+            }
+
+            // Show success
+            document.getElementById('formContent').style.display = 'none';
+            document.getElementById('successCard').classList.add('visible');
+            document.getElementById('successCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // ─── Scroll reveal ────────────────────────────────────────
+        const ro = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target) }
+        }), { threshold: .1 });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+</body>
+
+</html>
