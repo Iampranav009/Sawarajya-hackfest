@@ -1212,10 +1212,83 @@
                 grid-template-columns: 1fr !important
             }
         }
+
+        /* POPUP */
+        .popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s, visibility 0.4s;
+        }
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup-content {
+            background: var(--gb);
+            border: 1px solid var(--saffron);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 440px;
+            width: 90%;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.4s;
+            box-shadow: 0 10px 40px rgba(255, 107, 0, 0.3);
+            font-family: 'DM Sans', sans-serif;
+            color: var(--white);
+        }
+        .popup-overlay.show .popup-content {
+            transform: translateY(0);
+        }
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        .popup-close:hover {
+            color: var(--saffron);
+        }
+        .popup-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--sl);
+            margin-bottom: 12px;
+        }
+        .popup-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- SUBMISSION POPUP -->
+    <div id="subPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close" id="popupClose">&times;</button>
+            <h3>🚀 Submissions Are Open!</h3>
+            <p>The submission of project has started, submit your project by clicking the button below.</p>
+            <a href="./submission.html" class="btn btn-p" style="margin-top:20px;width:100%;justify-content:center;">Submit Project</a>
+        </div>
+    </div>
 
     <!-- NAVBAR -->
     <nav id="nb" role="navigation" aria-label="Main navigation">
@@ -1267,14 +1340,15 @@
                     onerror="this.outerHTML='<strong style=color:var(--saffron)>[AWS]</strong>'"> Community</p>
             <div class="hprize"><img src="./images/prize-poll.png?v=3" style="height: 100px; width: auto;"
                     alt="Prize Pool 20000" /></div>
-            <div class="hctas">
-                <a href="https://forms.gle/rrjgaeUzRRr3jVYK9" target="_blank" rel="noopener" id="btn-reg"
-                    class="btn btn-p">Register Now →</a>
+            <div class="hctas" style="gap: 16px;">
+                <a href="./submission.html" class="btn btn-p">Submit Project →</a>
+                <a href="./templates/swarajya-hackfest-template.pptx?v=2" download class="btn btn-o"
+                    style="border-color:var(--saffron);color:var(--saffron)">Download PPT ↓</a>
                 <a href="./problem-statement.html" class="btn btn-o"
-                    style="border-color:var(--saffron);color:var(--saffron)">View Problem Statement →</a>
+                    style="border-color:rgba(255,255,255,.5);color:var(--white)">View Problem Statement →</a>
             </div>
             <div class="htimer">
-                <p class="tl">Registration closes · 14 March 2026, 11:00 PM</p>
+                <p class="tl">Registration closed · 14 March 2026</p>
                 <div class="tbs">
                     <div class="tb"><span class="tn" id="td">00</span><span class="tu">Days</span></div>
                     <div class="tb"><span class="tn" id="th">00</span><span class="tu">Hours</span></div>
@@ -1447,6 +1521,7 @@
                             <li style="display:flex;align-items:flex-start;gap:9px;font-size:.88rem;color:rgba(255,255,255,.82);"><span style="color:#4ade80;flex-shrink:0;font-size:.82rem;margin-top:2px;">✔</span><span><strong>Data Report</strong> — project description, problem statement chosen, approach &amp; findings</span></li>
                             <li style="display:flex;align-items:flex-start;gap:9px;font-size:.88rem;color:rgba(255,255,255,.82);"><span style="color:#4ade80;flex-shrink:0;font-size:.82rem;margin-top:2px;">✔</span><span><strong>GitHub Repository URL</strong> — public repo with all source code</span></li>
                             <li style="display:flex;align-items:flex-start;gap:9px;font-size:.88rem;color:rgba(255,255,255,.82);"><span style="color:var(--sl);flex-shrink:0;font-size:.82rem;margin-top:2px;">⊙</span><span><strong>Deployment URL</strong> — live demo / hosted link <em>(optional but recommended)</em></span></li>
+                            <li style="display:flex;align-items:flex-start;gap:9px;font-size:.88rem;color:rgba(255,255,255,.82);"><span style="color:#4ade80;flex-shrink:0;font-size:.82rem;margin-top:2px;">✔</span><span><strong>Video Submission</strong> — working prototype video</span></li>
                         </ul>
                         <div style="margin-top:12px;font-size:.8rem;color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.07);padding-top:10px;">All items to be submitted via the <a href="./submission.html" style="color:var(--sl);font-weight:600;">Project Submission Portal →</a></div>
                     </div>
@@ -1603,7 +1678,7 @@
                     <li>No plagiarism — immediate disqualification</li>
                     <li>Must attend at least one mentorship session</li>
                     <li>AWS services usage gives evaluation priority</li>
-                    <li>Submission requires: <strong>PPT (official template)</strong> + <strong>Data Report</strong> + <strong>GitHub repo URL</strong> + Deployment URL (optional) — all via the Project Submission Portal</li>
+                    <li>Submission requires: <strong>PPT (official template)</strong> + <strong>Data Report</strong> + <strong>GitHub repo URL</strong> + Deployment URL (optional) + <strong>Working Prototype Video</strong> — all via the Project Submission Portal</li>
                     <li>Valid student ID / proof of enrollment required at registration</li>
                 </ul>
             </div>
@@ -1886,6 +1961,20 @@
             resize(); pts = Array.from({ length: 65 }, () => new P());
             (function loop() { ctx.clearRect(0, 0, W, H); pts.forEach(p => { p.update(); p.draw() }); ctx.globalAlpha = 1; requestAnimationFrame(loop) })();
         })();
+
+        // Submission Popup
+        window.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('subPopup');
+            const closeBtn = document.getElementById('popupClose');
+            if (popup) {
+                setTimeout(() => {
+                    popup.classList.add('show');
+                    setTimeout(() => { popup.classList.remove('show') }, 10000); // 10s auto-close
+                }, 800);
+                closeBtn.addEventListener('click', () => popup.classList.remove('show'));
+                popup.addEventListener('click', e => { if (e.target === popup) popup.classList.remove('show') });
+            }
+        });
     </script>
 </body>
 

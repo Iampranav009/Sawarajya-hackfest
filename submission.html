@@ -393,6 +393,16 @@
             background: rgba(255, 107, 0, .06);
         }
 
+        .file-drop-zone.video-drop-zone {
+            border-color: rgba(99, 179, 237, .35);
+        }
+
+        .file-drop-zone.video-drop-zone:hover,
+        .file-drop-zone.video-drop-zone.drag-over {
+            border-color: #63b3ed;
+            background: rgba(99, 179, 237, .06);
+        }
+
         .file-drop-zone input[type="file"] {
             position: absolute;
             inset: 0;
@@ -435,6 +445,12 @@
 
         .fdz-chosen.visible {
             display: flex
+        }
+
+        .fdz-chosen.video-chosen {
+            background: rgba(99, 179, 237, .1);
+            border: 1px solid rgba(99, 179, 237, .3);
+            color: #63b3ed;
         }
 
         /* UPLOAD NOTE */
@@ -734,12 +750,11 @@
                         <div class="form-group-title">Project Links</div>
 
                         <div class="field" id="field-github">
-                            <label for="github">GitHub Repository URL <span class="req">*</span></label>
+                            <label for="github">GitHub Repository URL <span class="opt">(optional)</span></label>
                             <input type="url" id="github" name="github"
-                                placeholder="https://github.com/username/repository" required />
-                            <div class="field-hint">Make sure the repository is <strong>public</strong> before
-                                submitting. Private repos cannot be reviewed.</div>
-                            <div class="field-error">Please enter your public GitHub repository URL.</div>
+                                placeholder="https://github.com/username/repository" />
+                            <div class="field-hint">If available, make sure the repository is <strong>public</strong>
+                                before submitting. Private repos cannot be reviewed.</div>
                         </div>
 
                         <div class="field">
@@ -772,6 +787,30 @@
                                 are allowed.
                                 <a href="./templates/swarajya-hackfest-template.pptx?v=2" download
                                     style="color:var(--sl);font-weight:600;margin-left:4px;">Download template →</a>
+                            </div>
+                        </div>
+
+                        <!-- VIDEO UPLOAD -->
+                        <div class="form-group-title">Working Prototype Video</div>
+
+                        <div class="field" id="field-video">
+                            <label>Upload Prototype Video <span class="req">*</span></label>
+                            <div class="file-drop-zone video-drop-zone" id="videoDropZone">
+                                <input type="file" id="videoFile" name="videoFile"
+                                    accept="video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov" required />
+                                <div class="fdz-icon">🎬</div>
+                                <div class="fdz-text">Add your working prototype video here</div>
+                                <div class="fdz-sub">or click to browse · MP4 / WEBM / MOV only · Max 200 MB</div>
+                                <div class="fdz-chosen video-chosen" id="chosenVideo">
+                                    <span>▶️</span>
+                                    <span id="chosenVideoName">video.mp4</span>
+                                </div>
+                            </div>
+                            <div class="field-error" id="videoError">Invalid video file. Only MP4, WEBM, or MOV files under 200 MB are accepted.</div>
+                            <div class="upload-note" style="border-left-color:#63b3ed;background:rgba(99,179,237,.07);">
+                                <span>🎥</span>
+                                Record a short demo video (2–5 minutes) showing your prototype in action. This helps
+                                evaluators better understand your solution.
                             </div>
                         </div>
 
@@ -861,36 +900,20 @@
          *  GOOGLE SHEETS INTEGRATION — SETUP INSTRUCTIONS
          * ===================================================
          *  1. Open Google Sheets → Tools → Apps Script
-         *  2. Paste the Apps Script code from the project README
-         *     (or see the inline comment below for the script code)
+         *  2. Paste the updated Apps Script (see below / README)
          *  3. Deploy as a Web App:
          *       Execute as: Me (your account)
          *       Who has access: Anyone
-         *  4. Copy the Web App URL and paste it below as APPS_SCRIPT_URL
+         *  4. Copy the Web App URL and paste below as APPS_SCRIPT_URL
          *
-         *  APPS SCRIPT CODE TO USE:
-         *  -------------------------------------------------
-         *  function doPost(e) {
-         *    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-         *    var data = JSON.parse(e.postData.contents);
-         *    sheet.appendRow([
-         *      new Date(),
-         *      data.teamName, data.leaderName, data.leaderEmail,
-         *      data.college, data.member1Name, data.member1Email,
-         *      data.member2Name || '', data.member2Email || '',
-         *      data.github || '', data.liveDemo || '',
-         *      data.problemStatement, data.pptFileName || ''
-         *    ]);
-         *    return ContentService
-         *      .createTextOutput(JSON.stringify({ result: 'success' }))
-         *      .setMimeType(ContentService.MimeType.JSON);
-         *  }
-         * ===================================================
-         *  NOTE: PPT files cannot be uploaded directly via Apps Script.
-         *  Option A: Use Google Drive upload link separately (see README)
-         *  Option B: Use a backend (Firebase Storage, etc.)
-         *  The form currently stores the PPT filename in Sheets and
-         *  can be extended to upload via Google Drive API.
+         *  SHEET COLUMNS (in order):
+         *  Timestamp | Team Name | Leader Name | Leader Email |
+         *  College | GitHub URL | Live Demo | Problem Statement |
+         *  PPT Drive Link | Video Drive Link | Data Report
+         *
+         *  NOTE: Video files are uploaded as base64 and stored in a
+         *  separate Google Drive folder (VIDEO_FOLDER_ID). Large videos
+         *  may take longer to upload — inform participants accordingly.
          * =================================================== */
 
         // ⬇️ REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
@@ -911,23 +934,23 @@
             });
         }
 
-        // ─── File drop zone ───────────────────────────────────────
+        // ─── PPT drop zone ────────────────────────────────────────
         const dropZone = document.getElementById('dropZone');
         const pptInput = document.getElementById('pptFile');
         const chosenFile = document.getElementById('chosenFile');
         const chosenFileName = document.getElementById('chosenFileName');
 
-        pptInput.addEventListener('change', () => handleFileChange(pptInput.files[0]));
+        pptInput.addEventListener('change', () => handlePPTChange(pptInput.files[0]));
 
         dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over') });
         dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
         dropZone.addEventListener('drop', e => {
             e.preventDefault(); dropZone.classList.remove('drag-over');
             const file = e.dataTransfer.files[0];
-            if (file) { pptInput.files = e.dataTransfer.files; handleFileChange(file) }
+            if (file) { pptInput.files = e.dataTransfer.files; handlePPTChange(file) }
         });
 
-        function handleFileChange(file) {
+        function handlePPTChange(file) {
             if (!file) return;
             const ext = file.name.split('.').pop().toLowerCase();
             const validTypes = ['ppt', 'pptx'];
@@ -945,6 +968,42 @@
             document.getElementById('field-ppt').classList.remove('has-error');
             chosenFileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
             chosenFile.classList.add('visible');
+        }
+
+        // ─── Video drop zone ──────────────────────────────────────
+        const videoDropZone = document.getElementById('videoDropZone');
+        const videoInput = document.getElementById('videoFile');
+        const chosenVideo = document.getElementById('chosenVideo');
+        const chosenVideoName = document.getElementById('chosenVideoName');
+
+        videoInput.addEventListener('change', () => handleVideoChange(videoInput.files[0]));
+
+        videoDropZone.addEventListener('dragover', e => { e.preventDefault(); videoDropZone.classList.add('drag-over') });
+        videoDropZone.addEventListener('dragleave', () => videoDropZone.classList.remove('drag-over'));
+        videoDropZone.addEventListener('drop', e => {
+            e.preventDefault(); videoDropZone.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file) { videoInput.files = e.dataTransfer.files; handleVideoChange(file) }
+        });
+
+        function handleVideoChange(file) {
+            if (!file) return;
+            const ext = file.name.split('.').pop().toLowerCase();
+            const validTypes = ['mp4', 'webm', 'mov'];
+            const maxSize = 200 * 1024 * 1024; // 200 MB
+
+            if (!validTypes.includes(ext) || file.size > maxSize) {
+                videoInput.value = '';
+                chosenVideo.classList.remove('visible');
+                document.getElementById('field-video').classList.add('has-error');
+                document.getElementById('videoError').textContent = !validTypes.includes(ext)
+                    ? 'Invalid file type. Only MP4, WEBM, or MOV files are accepted.'
+                    : 'File size exceeds 200 MB. Please compress your video.';
+                return;
+            }
+            document.getElementById('field-video').classList.remove('has-error');
+            chosenVideoName.textContent = file.name + ' (' + (file.size / (1024 * 1024)).toFixed(1) + ' MB)';
+            chosenVideo.classList.add('visible');
         }
 
         // ─── Form validation ──────────────────────────────────────
@@ -970,8 +1029,7 @@
             valid = validateField('leaderEmail', isEmail(getVal('leaderEmail'))) && valid;
             valid = validateField('college', getVal('college') !== '') && valid;
             valid = validateField('problemStatement', getVal('problemStatement') !== '') && valid;
-            // dataReport is optional — no validation needed
-            valid = validateField('github', getVal('github') !== '') && valid;
+            // github and dataReport are optional — no validation needed
 
             // PPT validation
             const pptFile = pptInput.files[0];
@@ -983,6 +1041,23 @@
             document.getElementById('field-ppt').classList.toggle('has-error', !pptValid);
             if (!pptValid) {
                 document.getElementById('pptError').textContent = 'Please upload a PPT or PPTX file (max 15 MB).';
+                valid = false;
+            }
+
+            // Video validation (required)
+            const videoFile = videoInput.files[0];
+            let videoValid = !!videoFile;
+            if (videoFile) {
+                const vExt = videoFile.name.split('.').pop().toLowerCase();
+                videoValid = ['mp4', 'webm', 'mov'].includes(vExt) && videoFile.size <= 200 * 1024 * 1024;
+            }
+            document.getElementById('field-video').classList.toggle('has-error', !videoValid);
+            if (!videoValid) {
+                document.getElementById('videoError').textContent = !videoFile
+                    ? 'Please upload your prototype video (max 200 MB).'
+                    : (!['mp4', 'webm', 'mov'].includes(videoFile.name.split('.').pop().toLowerCase())
+                        ? 'Invalid file type. Only MP4, WEBM, or MOV are accepted.'
+                        : 'File size exceeds 200 MB. Please compress your video.');
                 valid = false;
             }
 
@@ -1001,12 +1076,25 @@
             let pptBase64 = '';
             let pptMimeType = '';
             if (pptFile) {
-                btnLabel && (btnLabel.textContent = 'Uploading file…');
+                btnLabel && (btnLabel.textContent = 'Uploading PPT…');
                 try {
                     pptBase64 = await fileToBase64(pptFile);
                     pptMimeType = pptFile.type || 'application/vnd.ms-powerpoint';
                 } catch (readErr) {
-                    console.warn('File read error:', readErr);
+                    console.warn('PPT file read error:', readErr);
+                }
+            }
+
+            // ── Convert Video file to base64 for Drive upload ─────────
+            let videoBase64 = '';
+            let videoMimeType = '';
+            if (videoFile) {
+                btnLabel && (btnLabel.textContent = 'Uploading video… (this may take a moment)');
+                try {
+                    videoBase64 = await fileToBase64(videoFile);
+                    videoMimeType = videoFile.type || 'video/mp4';
+                } catch (readErr) {
+                    console.warn('Video file read error:', readErr);
                 }
             }
 
@@ -1021,7 +1109,10 @@
                 dataReport: getVal('dataReport'),
                 pptFileName: pptFile ? pptFile.name : '',
                 pptFileBase64: pptBase64,
-                pptMimeType: pptMimeType
+                pptMimeType: pptMimeType,
+                videoFileName: videoFile ? videoFile.name : '',
+                videoFileBase64: videoBase64,
+                videoMimeType: videoMimeType
             };
 
             // Submit to Google Apps Script (if configured)
